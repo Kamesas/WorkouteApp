@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { onIncrement, onReset, addNumber } from "../store/actions/actionsCounter";
+import { onIncrement, onReset, addNumber } from "../../store/actions/actionsCounter";
 import { useSelector, useDispatch } from "react-redux";
 
 interface IProps {

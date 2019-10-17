@@ -3,12 +3,12 @@ import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import { counterReducer } from "./reducers/counterReducer";
+import todosReducer from "./reducers/todosReducer";
 
 const rootReducer = combineReducers({
-  counter: counterReducer
+  counter: counterReducer,
+  todos: todosReducer
 });
-
-//export type AppState = ReturnType<typeof rootReducer>;
 
 export default function configureStore() {
   const middlewares = [thunkMiddleware];
