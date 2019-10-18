@@ -14,6 +14,7 @@ const TodoAppHooks: React.FC<IProps> = () => {
 
   useEffect(() => {
     dispatch(fetchTodos());
+    // eslint-disable-next-line
   }, []);
 
   return (

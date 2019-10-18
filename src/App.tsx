@@ -3,6 +3,7 @@ import "./App.css";
 import Counter from "./components/Counter/Counter";
 import TodoApp from "./components/TodoApp/TodoApp";
 import TodoAppHooks from "./components/TodoApp/TodoAppHooks";
+import TodoAppHooksApi from "./components/TodoApp/TodoAppHookApi";
 
 const App: React.FC = () => {
   return (
@@ -10,9 +11,12 @@ const App: React.FC = () => {
       Redux Starter
       <Counter />
       <hr />
+      <TodoAppHooksApi />
+      <hr />
       <TodoApp />
       <hr />
       <TodoAppHooks />
+      <hr />
     </div>
   );
 };

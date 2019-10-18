@@ -51,7 +51,6 @@ class TodoList extends Component<any> {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <form onSubmit={this.onSubmit}>
