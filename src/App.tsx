@@ -5,6 +5,7 @@ import Auth from "./components/Auth/Auth";
 //import TodoApp from "./components/TodoApp/TodoApp";
 import TodoAppHooksApi from "./components/TodoApp/TodoAppHookApi";
 import TodoAppHooks from "./components/TodoApp/TodoAppHooks";
+import TodoAppHooksApiRedux from "./components/TodoApp/TodoAppHookApiRedux";
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,8 @@ const App: React.FC = () => {
       {/*   <Counter />
       <hr /> */}
       <TodoAppHooksApi />
+      <hr />
+      <TodoAppHooksApiRedux />
       {/*   <hr />
       <TodoApp />
       <hr /> */}

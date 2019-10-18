@@ -4,10 +4,12 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import { counterReducer } from "./reducers/counterReducer";
 import todosReducer from "./reducers/todosReducer";
+import todoFirestore from "./reducers/todosAPIReducer";
 
 const rootReducer = combineReducers({
   counter: counterReducer,
-  todos: todosReducer
+  todos: todosReducer,
+  todoFirestore
 });
 
 export default function configureStore() {

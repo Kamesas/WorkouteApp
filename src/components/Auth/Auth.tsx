@@ -36,10 +36,6 @@ const Auth: React.FC<IProps> = () => {
     });
   };
 
-  // const onSubmitHandler = (e: { preventDefault: () => void }) => {
-  //   e.preventDefault();
-  // };
-
   const signUpHandler = () => {
     auth(signUpURL);
     setFormData(formDataDefault);
@@ -50,7 +46,7 @@ const Auth: React.FC<IProps> = () => {
     setFormData(formDataDefault);
   };
 
-  const auth = (url: string) => {
+  const auth = async (url: string) => {
     const data = {
       email: formData.email,
       password: formData.pass,
@@ -58,7 +54,7 @@ const Auth: React.FC<IProps> = () => {
     };
 
     try {
-      axios.post(`${url}${apiKey}`, data);
+      await axios.post(`${url}${apiKey}`, data);
     } catch (error) {
       console.log(error);
     }
