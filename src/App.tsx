@@ -1,12 +1,14 @@
 import React from "react";
 import "./App.css";
-import { arrayAutoFill } from "./functions/simple/forTesting";
+import { autonReplace } from "./functions/packNeedFunc/autoRaplace";
+import { repeatArgs } from "./functions/packNeedFunc/repeatArg";
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <h3>Apps functions</h3>
-      {console.log(arrayAutoFill)}
+      <div> {autonReplace()}</div>
+      <div> {repeatArgs()}</div>
     </div>
   );
 };
