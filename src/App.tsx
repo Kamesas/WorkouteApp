@@ -1,13 +1,12 @@
-import React from 'react';
-import './App.css';
-import Counter from "./components/Counter";
-
+import React from "react";
+import "./App.css";
+import Todo from "./components/Todo/Todo";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-     <h3>MobX starter</h3>
-      <Counter />
+      <h3>MobX starter</h3>
+      <Todo />
     </div>
   );
 };
