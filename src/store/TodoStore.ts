@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { decorate, observable, computed } from "mobx";
 
-export class Todos {
+class Todos {
   todos = [{ id: 1, text: "Buy eggs", completed: true }, { id: 2, text: "Write a post", completed: false }];
 
   get remainingTodos() {
@@ -18,4 +18,4 @@ decorate(Todos, {
   remainingTodos: computed
 });
 
-export default createContext(new Todos());
+export const TodoStoreContext = createContext(new Todos());
