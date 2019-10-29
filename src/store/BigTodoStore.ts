@@ -9,6 +9,10 @@ export class BigTodoStore {
 
   tasks: { id: number; title: string; isDone: boolean }[] = [];
 
+  setTasks = (tasks: { id: number; title: string; isDone: boolean }[]) => {
+    this.tasks = tasks;
+  };
+
   fetchTodos = () => {
     fetch("https://to-do-list-whis-firebase.firebaseio.com/todos.json")
       .then(res => res.json())
@@ -18,7 +22,7 @@ export class BigTodoStore {
           return data[task];
         })
       )
-      .then(parsData => (this.tasks = parsData))
+      .then(parseData => this.setTasks(parseData))
       .catch(err => console.log(err));
   };
 
@@ -85,6 +89,7 @@ export class BigTodoStore {
 
 decorate(BigTodoStore, {
   tasks: observable,
+  setTasks: action,
   addTask: action,
   fetchTodos: action,
   deleteTask: action.bound, //bound for example
