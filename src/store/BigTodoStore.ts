@@ -31,17 +31,27 @@ export class BigTodoStore {
     return this.tasks.filter(item => !item.isDone).length;
   }
 
-  addTask = (task: any) => {
-    this.tasks.push({
+  addTask = async (task: string) => {
+    const newTask = {
       id: this.tasks.length || 0,
       title: task,
       isDone: false
-    });
+    };
+
+    try {
+      const res = await fetch(`https://to-do-list-whis-firebase.firebaseio.com/todos.json`, {
+        method: "POST",
+        body: JSON.stringify(newTask) // данные могут быть 'строкой' или {объектом}!
+      });
+      res.status === 200 && this.fetchTodos();
+    } catch (error) {
+      console.error("Ошибка:", error);
+    }
   };
 
   doneTask = async (id: number) => {
     let updateItem;
-    this.tasks.map(task => {
+    this.tasks.forEach(task => {
       if (task.id === id) {
         task.isDone = !task.isDone;
         updateItem = task;
@@ -59,9 +69,17 @@ export class BigTodoStore {
     }
   };
 
-  deleteTask(id: number) {
-    // function declaretion for example
-    this.tasks = this.tasks.filter(item => item.id !== id);
+  async deleteTask(id: number) {
+    // function declaration for example
+    try {
+      const res = await fetch(`https://to-do-list-whis-firebase.firebaseio.com/todos/${id}.json`, {
+        method: "DELETE"
+      });
+
+      res.status === 200 && this.fetchTodos();
+    } catch (error) {
+      console.error("Ошибка:", error);
+    }
   }
 }
 
