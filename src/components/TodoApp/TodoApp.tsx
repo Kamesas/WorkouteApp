@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Task from "./Task";
 import { observer } from "mobx-react";
 import FormAddTask from "./FormAddTask";
@@ -6,8 +6,12 @@ import { RootStoreContext } from "../../store/RootStore";
 
 const TodoApp: React.FC = () => {
   const {
-    bigTodoStore: { activeTasksCount, sortedTasks, doneTask, deleteTask }
+    bigTodoStore: { activeTasksCount, sortedTasks, doneTask, deleteTask, fetchTodos }
   } = useContext(RootStoreContext);
+
+  useEffect(() => {
+    fetchTodos();
+  }, [fetchTodos]);
 
   return (
     <div className="TodoApp">
