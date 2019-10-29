@@ -1,10 +1,12 @@
 import React, { useState, useContext } from "react";
 import { observer } from "mobx-react";
-import BigTodoStore from "../../store/BigTodoStore";
+import { RootStoreContext } from "../../store/RootStore";
 
 const FormAddTask = () => {
   const [value, setValue] = useState("");
-  const { addTask } = useContext(BigTodoStore);
+  const {
+    bigTodoStore: { addTask }
+  } = useContext(RootStoreContext);
 
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();

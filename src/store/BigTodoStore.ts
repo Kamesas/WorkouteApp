@@ -1,7 +1,12 @@
 import { decorate, computed, observable, action } from "mobx";
-import { createContext } from "react";
+import { RootStore } from "./RootStore";
 
-class Store {
+export class BigTodoStore {
+  rootStore: RootStore;
+  constructor(rootStore: RootStore) {
+    this.rootStore = rootStore;
+  }
+
   tasks = [
     { id: 0, title: "Create todo-react app", done: false },
     { id: 1, title: "Make a video about it", done: true },
@@ -37,12 +42,10 @@ class Store {
   }
 }
 
-decorate(Store, {
+decorate(BigTodoStore, {
   tasks: observable,
   addTask: action,
   deleteTask: action.bound, //bound for example
   sortedTasks: computed,
   activeTasksCount: computed
 });
-
-export default createContext(new Store());

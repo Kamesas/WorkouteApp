@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import { observer } from "mobx-react";
-import { TodoStoreContext } from "./store/TodoStore";
 import TodoApp from "./components/TodoApp/TodoApp";
+import { RootStoreContext } from "./store/RootStore";
 
 const App = observer(() => {
-  const { todos, remainingTodos, toggleTodo } = useContext(TodoStoreContext);
+  const {
+    todotStore: { todos, remainingTodos, toggleTodo }
+  } = useContext(RootStoreContext);
 
   return (
     <div className="App">

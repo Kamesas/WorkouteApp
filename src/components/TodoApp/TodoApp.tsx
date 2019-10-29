@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
-import BigTodoStore from "../../store/BigTodoStore";
 import Task from "./Task";
 import { observer } from "mobx-react";
 import FormAddTask from "./FormAddTask";
+import { RootStoreContext } from "../../store/RootStore";
 
 const TodoApp: React.FC = () => {
-  const { activeTasksCount, sortedTasks, doneTask, deleteTask } = useContext(BigTodoStore);
+  const {
+    bigTodoStore: { activeTasksCount, sortedTasks, doneTask, deleteTask }
+  } = useContext(RootStoreContext);
 
   return (
     <div className="TodoApp">
