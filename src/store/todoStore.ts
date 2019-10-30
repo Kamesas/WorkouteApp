@@ -1,5 +1,4 @@
 import { observable, action, decorate, computed } from "mobx";
-import { any } from "prop-types";
 
 export class TodoStore {
   tasks = [
