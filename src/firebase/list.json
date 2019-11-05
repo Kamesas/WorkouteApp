@@ -1,0 +1,228 @@
+{
+  "dinosaurs": {
+    "-Lsw4b56u0z57o41RaW1": {
+      "lambeosaurus": {
+        "dimensions": {
+          "height": 2.1,
+          "length": 12.5,
+          "weight": 5000
+        }
+      },
+      "stegosaurus": {
+        "dimensions": {
+          "height": 4,
+          "length": 9,
+          "test": "test",
+          "weight": 2500
+        }
+      }
+    }
+  },
+  "notes": {
+    "-LFVz0w9G19Up1DgJ-TM": {
+      "noteContent": "my first note"
+    }
+  },
+  "personList": {
+    "-Lsvi5JgHH085ze0JgQY": [
+      {
+        "contact": "5/11/2018",
+        "id": 1,
+        "log": "somthing was",
+        "name": "Alex",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Front-end"
+      },
+      {
+        "contact": "5/11/2018",
+        "id": 2,
+        "log": "somthing was",
+        "name": "Don Joeeeeeee",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Back-end php c#"
+      },
+      {
+        "contact": "5/11/2018",
+        "id": 3,
+        "log": "somthing was",
+        "name": "Doe",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Full-stack"
+      },
+      {
+        "contact": "5/11/2018",
+        "id": 4,
+        "log": "somthing was",
+        "name": "Alex",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Front-end"
+      },
+      {
+        "contact": "5/11/2018",
+        "id": 5,
+        "log": "somthing was",
+        "name": "Nick",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Back-end"
+      },
+      {
+        "contact": "5/11/2018",
+        "id": 6,
+        "log": "somthing was",
+        "name": "Doe",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Full-stack"
+      }
+    ],
+    "-LsvjO_wBjPcgY8IdM4-": [
+      {
+        "contact": "5/11/2018",
+        "id": 1,
+        "log": "somthing was",
+        "name": "Alex",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Front-end"
+      },
+      {
+        "contact": "5/11/2018",
+        "id": 2,
+        "log": "somthing was",
+        "name": "Don Joeeeeeee",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Back-end php c#"
+      },
+      {
+        "contact": "5/11/2018",
+        "id": 3,
+        "log": "somthing was",
+        "name": "Doe",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Full-stack"
+      },
+      {
+        "contact": "5/11/2018",
+        "id": 4,
+        "log": "somthing was",
+        "name": "Alex",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Front-end"
+      },
+      {
+        "contact": "5/11/2018",
+        "id": 5,
+        "log": "somthing was",
+        "name": "Nick",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Back-end"
+      },
+      {
+        "contact": "5/11/2018",
+        "id": 6,
+        "log": "somthing was",
+        "name": "Doe",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Full-stack"
+      }
+    ],
+    "-LsvjQW0ZB7uAo9su67i": [
+      {
+        "contact": "5/11/2018",
+        "id": 1,
+        "log": "somthing was",
+        "name": "Alex",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Front-end"
+      },
+      {
+        "contact": "5/11/2018",
+        "id": 2,
+        "log": "somthing was",
+        "name": "Don Joeeeeeee",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Back-end php c#"
+      },
+      {
+        "contact": "5/11/2018",
+        "id": 3,
+        "log": "somthing was",
+        "name": "Doe",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Full-stack"
+      },
+      {
+        "contact": "5/11/2018",
+        "id": 4,
+        "log": "somthing was",
+        "name": "Alex",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Front-end"
+      },
+      {
+        "contact": "5/11/2018",
+        "id": 5,
+        "log": "somthing was",
+        "name": "Nick",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Back-end"
+      },
+      {
+        "contact": "5/11/2018",
+        "id": 6,
+        "log": "somthing was",
+        "name": "Doe",
+        "ping": "2/05/12",
+        "rating": 2,
+        "skills": "Full-stack"
+      }
+    ]
+  },
+  "todos": {
+    "-LsNVOY4_cQoIST_L2rL": {
+      "id": "-LsNVOY4_cQoIST_L2rL",
+      "isDone": false,
+      "title": "first new task"
+    },
+    "-LsNVTKwUyxg_Kb5dkMV": {
+      "id": "-LsNVTKwUyxg_Kb5dkMV",
+      "isDone": true,
+      "title": "seccond new task"
+    },
+    "-LsNVYjt58trDYZdisue": {
+      "id": 3,
+      "isDone": false,
+      "title": "YEEE! It's work ! Cool !"
+    },
+    "-LsNWIp9lgR7NIXPPu6q": {
+      "id": "-LsNWIp9lgR7NIXPPu6q",
+      "isDone": false,
+      "title": "ddd"
+    },
+    "-LsN_d4rlHcION0DI26m": {
+      "id": "-LsN_d4rlHcION0DI26m",
+      "isDone": false,
+      "title": "jdjdjd"
+    },
+    "-LsQqp63aK1ddzOes_dL": {
+      "id": "-LsQqp63aK1ddzOes_dL",
+      "isDone": true,
+      "title": "ASDFASD"
+    }
+  }
+}
