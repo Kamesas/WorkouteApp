@@ -1,22 +1,19 @@
-.App {
+.datePicker {
+  border: 1px solid red;
+  padding: 5px;
+  width: 140px;
+}
+
+.month {
+  width: 100%;
+}
+
+.day {
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid green;
+  width: 20px;
+  height: 20px;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
+  line-height: 20px;
 }
