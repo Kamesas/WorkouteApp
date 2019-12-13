@@ -1,0 +1,30 @@
+.Slider
+  border: 1px solid #000
+  margin: 1em
+  position: relative
+
+  &-wrapp
+    border: 3px solid red
+    display: flex
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+
+    .slide
+      border: 1px solid green
+      transition: transform 1s
+      flex: 1
+      padding: 0 1em
+
+      &-image
+        max-width: 100%
+
+
+.moveRight
+  transform: translateX(100%)
+
+.moveLeft
+  transform: translateX(-100%)
+
+
