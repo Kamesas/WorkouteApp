@@ -34,7 +34,7 @@ const Slider: React.FC<IProps> = () => {
 
       <div className="Slider">
         <div className="Slider-wrapp">
-          {sliderItems.slice(slide, slide + 5).map(item => {
+          {sliderItems.slice(slide, slide + 6).map(item => {
             return (
               <div className={`slide ${moveClass}`}>
                 <img src={item.img} alt={item.title} className="slide-image" />
@@ -43,6 +43,16 @@ const Slider: React.FC<IProps> = () => {
               </div>
             );
           })}
+
+          {/*  <div className={`slide ${moveClass}`}>
+            <img
+              src={sliderItems[slide + 4].img}
+              alt={sliderItems[slide + 4].title}
+              className="slide-image"
+            />
+            <h5 className="slide-title"> {sliderItems[slide + 4].title}</h5>
+            <div>{sliderItems[slide + 4].description}</div>
+          </div> */}
         </div>
       </div>
     </>
