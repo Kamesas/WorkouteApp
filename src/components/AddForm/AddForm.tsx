@@ -4,13 +4,15 @@ interface IProps {
   valueAmount: string;
   setValueAmount(val: string): any;
   onPostDate(): any;
+  selectedExercise: string;
   [key: string]: any;
 }
 
 const AddForm: React.FC<IProps> = ({
   valueAmount,
   setValueAmount,
-  onPostDate
+  onPostDate,
+  selectedExercise
 }) => {
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,6 +24,7 @@ const AddForm: React.FC<IProps> = ({
       <input
         type="text"
         value={valueAmount}
+        placeholder={selectedExercise}
         onChange={({ target: { value } }) => setValueAmount(value)}
       />
       <button>add</button>

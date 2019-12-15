@@ -7,12 +7,7 @@ import {
   onCreateWorkoutData
 } from "../store/actions/actionWorkout";
 import AddForm from "../components/AddForm/AddForm";
-
-const exercises = [
-  { title: "Push ups", alias: "pushUps" },
-  { title: "Pull ups", alias: "pullUps" },
-  { title: "Knee bend", alias: "kneeBend" }
-];
+import Exerscises from "../components/Exerscises/Exerscises";
 
 const Main: React.FC = () => {
   const dispatch = useDispatch();
@@ -22,6 +17,7 @@ const Main: React.FC = () => {
 
   useEffect(() => {
     dispatch(onGetWorkoutData());
+    // eslint-disable-next-line
   }, []);
 
   const onPostDate = () => {
@@ -44,6 +40,7 @@ const Main: React.FC = () => {
     };
 
     dispatch(onCreateWorkoutData(newData));
+    setValueAmount("");
   };
 
   const onUpdateNewData = (selectedExercise: string) => {
@@ -86,28 +83,20 @@ const Main: React.FC = () => {
 
       dispatch(onCreateWorkoutData(newData));
     }
+
+    setValueAmount("");
   };
 
   return (
     <div className="Main">
-      <div>
-        {exercises.map(item => {
-          return (
-            <div key={item.alias} onClick={() => setExercise(item.alias)}>
-              {item.title}
-            </div>
-          );
-        })}
-      </div>
+      <Exerscises setExercise={setExercise} />
 
       <AddForm
         valueAmount={valueAmount}
         setValueAmount={setValueAmount}
         onPostDate={onPostDate}
+        selectedExercise={selectedExercise}
       />
-
-      <hr />
-      {selectedExercise}
     </div>
   );
 };

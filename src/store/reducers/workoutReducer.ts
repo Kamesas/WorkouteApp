@@ -1,4 +1,4 @@
-import { GET_WORKOUT_ACTION } from "../actions/typesTodos";
+import { GET_WORKOUT_ACTION } from "../actions/types";
 
 const initialState: any = null;
 

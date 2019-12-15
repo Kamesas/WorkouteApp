@@ -1,4 +1,4 @@
-import { GET_WORKOUT_ACTION } from "./typesTodos";
+import { GET_WORKOUT_ACTION } from "./types";
 
 export const onGetWorkoutData = () => async (dispatch: Function) => {
   try {
