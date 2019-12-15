@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./Main.scss";
 import dayjs from "dayjs";
 import { useDispatch, useSelector } from "react-redux";
 import {

@@ -1,30 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { menuItems } from "./model";
 import "./Header.scss";
 
-interface IProps {
-  [key: string]: any;
-}
-
-const Header: React.FC<IProps> = () => {
+const Header: React.FC = () => {
   return (
     <div className="Header">
       <NavLink to="/" className="Header-logo">
-        Logo
+        Workout App
       </NavLink>
-
-      <ul>
-        {menuItems.map(item => {
-          return (
-            <li key={item.link}>
-              <NavLink to={item.link} exact={item.exact}>
-                {item.title}
-              </NavLink>
-            </li>
-          );
-        })}
-      </ul>
+      <div className="Header-user">A</div>
     </div>
   );
 };

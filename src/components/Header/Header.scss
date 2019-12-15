@@ -1,3 +1,28 @@
+@import "../../assets/styles/colors.scss";
+
 .Header {
-  border: 1px solid #000;
+  background-color: $BLACK_2;
+  box-shadow: 0 3px 80px rgba(158, 163, 180, 0.3);
+  height: 80px;
+  padding: 0 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &-logo {
+    color: $WHITE_1;
+    font-size: 1.5em;
+    text-decoration: none;
+    display: block;
+  }
+
+  &-user {
+    color: $WHITE_1;
+    border: 1px solid $WHITE_1;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    line-height: 40px;
+    text-align: center;
+  }
 }

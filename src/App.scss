@@ -1,0 +1,32 @@
+@import "./assets/styles/colors.scss";
+
+body {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0;
+  height: 100%;
+  background-color: $BLACK_1;
+  color: $WHITE_1;
+}
+
+.App {
+  min-height: 100vh;
+  position: relative;
+
+  &-main {
+    display: flex;
+  }
+
+  &-sideMenu {
+    position: fixed;
+    height: 100%;
+    background-color: $BLACK_2;
+    box-shadow: 0 3px 80px rgba(158, 163, 180, 0.3);
+    width: 80px;
+  }
+
+  &-mainContent {
+    margin-left: 80px;
+    padding: 2em;
+  }
+}
