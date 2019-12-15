@@ -6,6 +6,7 @@ import {
   onUpdatetWorkoutData,
   onCreateWorkoutData
 } from "../store/actions/actionWorkout";
+import AddForm from "../components/AddForm/AddForm";
 
 const exercises = [
   { title: "Push ups", alias: "pushUps" },
@@ -98,12 +99,13 @@ const Main: React.FC = () => {
           );
         })}
       </div>
-      <input
-        type="text"
-        value={valueAmount}
-        onChange={({ target: { value } }) => setValueAmount(value)}
+
+      <AddForm
+        valueAmount={valueAmount}
+        setValueAmount={setValueAmount}
+        onPostDate={onPostDate}
       />
-      <button onClick={onPostDate}>add</button>
+
       <hr />
       {selectedExercise}
     </div>
