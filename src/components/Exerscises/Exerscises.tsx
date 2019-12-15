@@ -1,10 +1,7 @@
 import React, { useEffect } from "react";
 import { exercises } from "./model";
 import "./Exercises.scss";
-
-interface IProps {
-  setExercise(val: string): void;
-}
+import { IProps } from "./interfaces";
 
 const Exerscises: React.FC<IProps> = ({ setExercise }) => {
   useEffect(() => {

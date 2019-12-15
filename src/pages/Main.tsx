@@ -103,7 +103,7 @@ const Main: React.FC = () => {
         <TrainingList workoutStore={workoutStore} />
       </div>
 
-      <div className="Main-rightSide">right</div>
+      <div className="Main-rightSide">WEEK'S Data</div>
     </div>
   );
 };
