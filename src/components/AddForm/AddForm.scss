@@ -1,0 +1,33 @@
+@import "../../assets/styles/colors.scss";
+
+.AddForm {
+  width: 45%;
+
+  &-input,
+  &-button {
+    color: $WHITE_1;
+    background-color: transparent;
+    border: 2px solid $BLUE_1;
+    padding: 1em;
+  }
+
+  &-input {
+    box-sizing: border-box;
+    width: 80%;
+    padding-right: 2em;
+    border-radius: 1.75em 0 0 1.75em;
+    border-right: none;
+
+    &::placeholder {
+      color: $WHITE_2;
+      letter-spacing: 2px;
+    }
+  }
+
+  &-button {
+    width: 20%;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 0 1.75em 1.75em 0;
+  }
+}

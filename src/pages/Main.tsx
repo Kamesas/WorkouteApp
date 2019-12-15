@@ -23,11 +23,9 @@ const Main: React.FC = () => {
   }, []);
 
   const onPostDate = () => {
-    if (Object.keys(workoutStore).length !== 0) {
-      onUpdateNewData(selectedExercise);
-    } else {
-      onCreateData();
-    }
+    Object.keys(workoutStore).length !== 0
+      ? onUpdateNewData(selectedExercise)
+      : onCreateData();
   };
 
   const onCreateData = () => {
@@ -91,16 +89,21 @@ const Main: React.FC = () => {
 
   return (
     <div className="Main">
-      <Exerscises setExercise={setExercise} />
+      <div className="Main-leftSide">
+        <div className="Main-leftSide-header">
+          <AddForm
+            valueAmount={valueAmount}
+            setValueAmount={setValueAmount}
+            onPostDate={onPostDate}
+            selectedExercise={selectedExercise}
+          />
+          <Exerscises setExercise={setExercise} />
+        </div>
 
-      <AddForm
-        valueAmount={valueAmount}
-        setValueAmount={setValueAmount}
-        onPostDate={onPostDate}
-        selectedExercise={selectedExercise}
-      />
+        <TrainingList workoutStore={workoutStore} />
+      </div>
 
-      <TrainingList workoutStore={workoutStore} />
+      <div className="Main-rightSide">right</div>
     </div>
   );
 };

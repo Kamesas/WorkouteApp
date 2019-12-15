@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { exercises } from "./model";
+import "./Exercises.scss";
 
 interface IProps {
-  setExercise(val: string): any;
-  [key: string]: any;
+  setExercise(val: string): void;
 }
 
 const Exerscises: React.FC<IProps> = ({ setExercise }) => {
@@ -13,7 +13,7 @@ const Exerscises: React.FC<IProps> = ({ setExercise }) => {
   }, []);
 
   return (
-    <div className="Exerscises">
+    <div className="Exercises">
       {exercises.map(item => {
         return (
           <div key={item.alias} onClick={() => setExercise(item.alias)}>

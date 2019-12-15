@@ -1,12 +1,6 @@
 import React from "react";
-
-interface IProps {
-  valueAmount: string;
-  setValueAmount(val: string): any;
-  onPostDate(): any;
-  selectedExercise: string;
-  [key: string]: any;
-}
+import "./AddForm.scss";
+import { IProps } from "./interfaces";
 
 const AddForm: React.FC<IProps> = ({
   valueAmount,
@@ -26,8 +20,9 @@ const AddForm: React.FC<IProps> = ({
         value={valueAmount}
         placeholder={selectedExercise}
         onChange={({ target: { value } }) => setValueAmount(value)}
+        className="AddForm-input"
       />
-      <button>add</button>
+      <button className="AddForm-button">add</button>
     </form>
   );
 };
