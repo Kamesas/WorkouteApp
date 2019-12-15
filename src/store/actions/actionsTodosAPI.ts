@@ -8,7 +8,6 @@ import {
   ERROR,
   ITodoItem
 } from "./typesTodos";
-import axios from "axios";
 
 //axios.delete(`https://react-16-demo.firebaseio.com/todos/-Lhu8a0uoSRixdmECYPE.json`). then();
 
@@ -52,12 +51,17 @@ export const removeAll = () => {
   };
 };
 
-export const getTodos = () => async (dispatch: Function, getState: Function) => {
+export const getTodos = () => async (
+  dispatch: Function,
+  getState: Function
+) => {
   console.log(getState());
   dispatch(loading());
   try {
-    const res = await axios.get("https://to-do-list-whis-firebase.firebaseio.com/todos.json");
-    const data = await res.data;
+    const res = await fetch(
+      "https://to-do-list-whis-firebase.firebaseio.com/todos.json"
+    );
+    const data = await res.json();
 
     const newArr = Object.keys(data).map(item => {
       return data[item];
