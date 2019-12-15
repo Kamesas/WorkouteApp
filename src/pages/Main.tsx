@@ -8,12 +8,13 @@ import {
 } from "../store/actions/actionWorkout";
 import AddForm from "../components/AddForm/AddForm";
 import Exerscises from "../components/Exerscises/Exerscises";
+import TrainingList from "../components/TrainingList/TrainingList";
 
 const Main: React.FC = () => {
   const dispatch = useDispatch();
   const workoutStore = useSelector((state: any) => state.workoutStore);
   const [valueAmount, setValueAmount] = useState<string>("");
-  const [selectedExercise, setExercise] = useState<string>("pushUps");
+  const [selectedExercise, setExercise] = useState<string>("");
 
   useEffect(() => {
     dispatch(onGetWorkoutData());
@@ -97,6 +98,8 @@ const Main: React.FC = () => {
         onPostDate={onPostDate}
         selectedExercise={selectedExercise}
       />
+
+      <TrainingList workoutStore={workoutStore} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { exercises } from "./model";
 
 interface IProps {
@@ -7,6 +7,11 @@ interface IProps {
 }
 
 const Exerscises: React.FC<IProps> = ({ setExercise }) => {
+  useEffect(() => {
+    setExercise("pushUps");
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className="Exerscises">
       {exercises.map(item => {

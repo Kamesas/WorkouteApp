@@ -22,7 +22,7 @@ const AddForm: React.FC<IProps> = ({
   return (
     <form className="AddForm" onSubmit={onSubmitHandler}>
       <input
-        type="text"
+        type="number"
         value={valueAmount}
         placeholder={selectedExercise}
         onChange={({ target: { value } }) => setValueAmount(value)}
