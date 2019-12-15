@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   onGetWorkoutData,
   onUpdatetWorkoutData,
-  onCreateWorkoutData,
-  onDeleteWorkoutData
+  onCreateWorkoutData
 } from "../store/actions/actionWorkout";
 
 const exercises = [
@@ -74,7 +73,6 @@ const Main: React.FC = () => {
       }
       dispatch(onUpdatetWorkoutData(newData, currDayId));
     } else {
-      console.log("now today");
       newData = {
         date: dayjs().format("DD MM YYYY"),
         [`${selectedExercise}`]: [
@@ -87,10 +85,6 @@ const Main: React.FC = () => {
 
       dispatch(onCreateWorkoutData(newData));
     }
-
-    //newData.date = dayjs().format("DD MM YYYY");
-
-    console.log(newData);
   };
 
   return (
@@ -110,9 +104,6 @@ const Main: React.FC = () => {
         onChange={({ target: { value } }) => setValueAmount(value)}
       />
       <button onClick={onPostDate}>add</button>
-      <button onClick={() => dispatch(onDeleteWorkoutData({ yes: "yes" }))}>
-        test
-      </button>
       <hr />
       {selectedExercise}
     </div>
