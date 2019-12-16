@@ -1,48 +1,30 @@
 import React from "react";
+import { IProps } from "./interfaces";
 
-interface IProps {
-  workoutStore: any;
-  [key: string]: any;
-}
+const TrainingList: React.FC<IProps> = ({ workoutStore, currDayId }) => {
+  if (!workoutStore) return <h2>Nothing</h2>;
 
-const TrainingList: React.FC<IProps> = ({ workoutStore }) => {
   return (
     <div className="TrainingList">
-      {workoutStore &&
-        Object.keys(workoutStore).length > 0 &&
-        Object.keys(workoutStore).map(item => {
-          const keys = Object.keys(workoutStore[item]);
-          return (
-            <div key={workoutStore[item].date}>
-              <hr />
-              <div style={{ color: "red" }}>
-                Date: {workoutStore[item].date}
-              </div>
-
-              <div>
-                {keys.map((exercise, i) => {
-                  if (exercise === "date") return;
-                  return (
-                    <div key={i}>
-                      <h5>{exercise}</h5>
-                      <div>
-                        {workoutStore[item][`${exercise}`].map(
-                          (val: any, i: number) => {
-                            return (
-                              <div key={i}>
-                                {val.nemberOfItems || 0} ===> {val.time}
-                              </div>
-                            );
-                          }
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+      <hr />
+      <div style={{ color: "red" }}>Date: {workoutStore[currDayId].date}</div>
+      {Object.keys(workoutStore[currDayId]).map((item, i) => {
+        if (item === "date") return;
+        return (
+          <div key={i}>
+            <h5>{item}</h5>
+            <div>
+              {workoutStore[currDayId][`${item}`].map((val: any, i: number) => {
+                return (
+                  <div key={i}>
+                    {val.nemberOfItems || 0} ===> {val.time}
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
+          </div>
+        );
+      })}
     </div>
   );
 };

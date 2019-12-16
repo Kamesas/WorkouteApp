@@ -10,6 +10,8 @@ import {
 import AddForm from "../components/AddForm/AddForm";
 import Exerscises from "../components/Exerscises/Exerscises";
 import TrainingList from "../components/TrainingList/TrainingList";
+import WeekDataList from "../components/WeekDataList/WeekDataList";
+import LastTrainings from "../components/LastTrainings/LastTrainings";
 
 const Main: React.FC = () => {
   const dispatch = useDispatch();
@@ -87,6 +89,12 @@ const Main: React.FC = () => {
     setValueAmount("");
   };
 
+  const currDayId: any =
+    workoutStore &&
+    Object.keys(workoutStore).find(item => {
+      return workoutStore[item].date === dayjs().format("DD MM YYYY");
+    });
+
   return (
     <div className="Main">
       <div className="Main-leftSide">
@@ -103,10 +111,12 @@ const Main: React.FC = () => {
           />
         </div>
 
-        <TrainingList workoutStore={workoutStore} />
+        <TrainingList workoutStore={workoutStore} currDayId={currDayId} />
       </div>
 
-      <div className="Main-rightSide">WEEK'S Data</div>
+      <div className="Main-rightSide">
+        <LastTrainings workoutStore={workoutStore} />
+      </div>
     </div>
   );
 };
