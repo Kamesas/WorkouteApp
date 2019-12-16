@@ -97,7 +97,10 @@ const Main: React.FC = () => {
             onPostDate={onPostDate}
             selectedExercise={selectedExercise}
           />
-          <Exerscises setExercise={setExercise} />
+          <Exerscises
+            setExercise={setExercise}
+            selectedExercise={selectedExercise}
+          />
         </div>
 
         <TrainingList workoutStore={workoutStore} />

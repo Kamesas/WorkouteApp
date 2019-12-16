@@ -1,10 +1,12 @@
 @import "../../assets/styles/colors.scss";
 
 .Header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   background-color: $BLACK_2;
   box-shadow: 0 3px 80px rgba(158, 163, 180, 0.3);
   height: 80px;
-  padding: 0 1em;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -14,9 +16,11 @@
     font-size: 1.5em;
     text-decoration: none;
     display: block;
+    margin-left: 1em;
   }
 
   &-user {
+    margin-right: 1em;
     color: $WHITE_1;
     border: 1px solid $WHITE_1;
     width: 40px;

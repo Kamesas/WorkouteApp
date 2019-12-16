@@ -3,21 +3,37 @@ import { exercises } from "./model";
 import "./Exercises.scss";
 import { IProps } from "./interfaces";
 
-const Exerscises: React.FC<IProps> = ({ setExercise }) => {
+const Exerscises: React.FC<IProps> = ({ setExercise, selectedExercise }) => {
   useEffect(() => {
     setExercise("pushUps");
     // eslint-disable-next-line
   }, []);
 
+  const handleChange = (value: string) => {
+    setExercise(value);
+  };
+
   return (
     <div className="Exercises">
-      {exercises.map(item => {
-        return (
-          <div key={item.alias} onClick={() => setExercise(item.alias)}>
-            {item.title}
-          </div>
-        );
-      })}
+      <label className="Exercises-label">
+        <select
+          value={selectedExercise}
+          className="Exercises-select"
+          onChange={({ target: { value } }) => handleChange(value)}
+        >
+          {exercises.map(item => {
+            return (
+              <option
+                key={item.alias}
+                className="Exercises-option"
+                value={item.alias}
+              >
+                {item.title}
+              </option>
+            );
+          })}
+        </select>
+      </label>
     </div>
   );
 };

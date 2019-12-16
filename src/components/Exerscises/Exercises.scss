@@ -1,4 +1,21 @@
+@import "../../assets/styles/colors.scss";
+
 .Exercises {
-  border: 1px solid #fff;
   width: 45%;
+
+  &-select {
+    color: $WHITE_1;
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid $BLUE_1;
+    padding: 1em;
+    box-sizing: border-box;
+    border-radius: 1.75em;
+    border-right: none;
+    cursor: pointer;
+  }
+
+  &-option {
+    color: $BLACK_2;
+  }
 }
