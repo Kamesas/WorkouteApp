@@ -10,7 +10,6 @@ import {
 import AddForm from "../components/AddForm/AddForm";
 import Exerscises from "../components/Exerscises/Exerscises";
 import TrainingList from "../components/TrainingList/TrainingList";
-import WeekDataList from "../components/WeekDataList/WeekDataList";
 import LastTrainings from "../components/LastTrainings/LastTrainings";
 
 const Main: React.FC = () => {
@@ -35,7 +34,7 @@ const Main: React.FC = () => {
       date: dayjs().format("DD MM YYYY"),
       [`${selectedExercise}`]: [
         {
-          nemberOfItems: valueAmount,
+          numberOfItems: valueAmount,
           time: dayjs().format("HH:mm:ss")
         }
       ]
@@ -59,14 +58,14 @@ const Main: React.FC = () => {
         newData[`${selectedExercise}`] = [
           ...workoutStore[currDayId][`${selectedExercise}`],
           {
-            nemberOfItems: valueAmount,
+            numberOfItems: valueAmount,
             time: dayjs().format("HH:mm:ss")
           }
         ];
       } else {
         newData[`${selectedExercise}`] = [
           {
-            nemberOfItems: valueAmount,
+            numberOfItems: valueAmount,
             time: dayjs().format("HH:mm:ss")
           }
         ];
@@ -77,7 +76,7 @@ const Main: React.FC = () => {
         date: dayjs().format("DD MM YYYY"),
         [`${selectedExercise}`]: [
           {
-            nemberOfItems: valueAmount,
+            numberOfItems: valueAmount,
             time: dayjs().format("HH:mm:ss")
           }
         ]

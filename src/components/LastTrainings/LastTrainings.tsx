@@ -33,7 +33,7 @@ const LastTrainings: React.FC<IProps> = ({ workoutStore }) => {
                           (val: any, i: number) => {
                             return (
                               <div key={i}>
-                                {val.nemberOfItems || 0} ===> {val.time}
+                                {val.numberOfItems || 0} ===> {val.time}
                               </div>
                             );
                           }

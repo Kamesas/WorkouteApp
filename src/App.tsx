@@ -3,6 +3,7 @@ import { Switch, Route, BrowserRouter } from "react-router-dom";
 import "./App.scss";
 import Header from "./components/Header/Header";
 import SideMenu from "./components/SideMenu/SideMenu";
+import "./conting";
 
 const Main = React.lazy(() => import("./pages/Main"));
 const Auth = React.lazy(() => import("./pages/Auth"));
