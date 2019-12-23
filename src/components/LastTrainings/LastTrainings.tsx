@@ -12,40 +12,44 @@ const LastTrainings: React.FC<IProps> = ({ workoutStore }) => {
       <div>Last trainings</div>
       {workoutStore &&
         Object.keys(workoutStore).length > 0 &&
-        Object.keys(workoutStore).map(item => {
-          if (workoutStore[item].date === dayjs().format("DD MM YYYY")) return;
-          const keys = Object.keys(workoutStore[item]);
-          return (
-            <div key={workoutStore[item].date}>
-              <hr />
-              <div style={{ color: "red" }}>
-                Date: {workoutStore[item].date}
-              </div>
+        Object.keys(workoutStore)
+          .reverse()
+          .slice(0, 3)
+          .map(item => {
+            if (workoutStore[item].date === dayjs().format("DD MM YYYY"))
+              return null;
+            const keys = Object.keys(workoutStore[item]);
+            return (
+              <div key={workoutStore[item].date}>
+                <hr />
+                <div style={{ color: "red" }}>
+                  Date: {workoutStore[item].date}
+                </div>
 
-              <div>
-                {keys.map((exercise, i) => {
-                  if (exercise === "date") return;
-                  return (
-                    <div key={i}>
-                      <h5>{exercise}</h5>
-                      <div>
-                        {workoutStore[item][`${exercise}`].map(
-                          (val: any, i: number) => {
-                            return (
-                              <div key={i}>
-                                {val.numberOfItems || 0} ===> {val.time}
-                              </div>
-                            );
-                          }
-                        )}
+                <div>
+                  {keys.map((exercise, i) => {
+                    if (exercise === "date") return null;
+                    return (
+                      <div key={i}>
+                        <h5>{exercise}</h5>
+                        <div>
+                          {workoutStore[item][`${exercise}`].map(
+                            (val: any, i: number) => {
+                              return (
+                                <div key={i}>
+                                  {val.numberOfItems || 0} ===> {val.time}
+                                </div>
+                              );
+                            }
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
     </div>
   );
 };
