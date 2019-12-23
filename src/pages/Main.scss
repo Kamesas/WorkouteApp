@@ -21,4 +21,17 @@
     margin-left: 1em;
     padding: 1em;
   }
+
+  @media screen and (max-width: 1024px) {
+    flex-wrap: wrap;
+  }
+
+  @media screen and (max-width: 920px) {
+    &-leftSide {
+      &-header {
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
 }
