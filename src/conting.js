@@ -94,5 +94,5 @@ Object.keys(copyDb.Kamesas).forEach(item => {
   });
 });
 
-console.log(newDB);
+// console.log(newDB);
 localStorage.setItem("top", JSON.stringify(newDB));

@@ -1,0 +1,53 @@
+@import "../../../assets/styles/colors.scss";
+
+.Exercise {
+  &-header {
+    margin-top: 0.75em;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+    display: flex;
+  }
+
+  &-title {
+    padding-right: 0.5em;
+    text-transform: uppercase;
+    font-size: 1.25em;
+  }
+
+  &-sum {
+    color: $RED_1;
+    font-size: 1.2em;
+    margin-left: auto;
+  }
+
+  &-shewron {
+    margin-right: 0.5em;
+    color: $BLUE_1;
+  }
+
+  &-list {
+    border: 1px solid $WHITE_2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.25em 0;
+  }
+
+  &-listItem {
+    padding: 0.35em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    &-numberOfItems {
+      margin-bottom: 0.25em;
+    }
+
+    &-time {
+      font-size: 0.8em;
+    }
+  }
+}
