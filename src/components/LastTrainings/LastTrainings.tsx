@@ -16,7 +16,7 @@ const LastTrainings: React.FC<IProps> = ({ workoutStore }) => {
         Object.keys(workoutStore).length > 0 &&
         Object.keys(workoutStore)
           .reverse()
-          // .slice(0, 3)
+          .slice(0, 4)
           .map(item => {
             if (workoutStore[item].date === dayjs().format("DD MM YYYY"))
               return null;

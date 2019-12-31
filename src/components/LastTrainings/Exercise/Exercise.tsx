@@ -72,16 +72,15 @@ const Exercise: React.FC<IProps> = ({
           {editing && <TiWarning className="Exercise-warning" />}
         </div>
       )}
-      <div
-        className="Exercise-header"
-        onClick={() => setShowDetails(!showDetails)}
-      >
-        {showDetails ? (
-          <FaChevronCircleUp className="Exercise-shewron" />
-        ) : (
-          <FaChevronCircleDown className="Exercise-shewron" />
-        )}
-        <span className="Exercise-title">{exerciseName}</span>
+      <div className="Exercise-header">
+        <div onClick={() => setShowDetails(!showDetails)}>
+          {showDetails ? (
+            <FaChevronCircleUp className="Exercise-shewron" />
+          ) : (
+            <FaChevronCircleDown className="Exercise-shewron" />
+          )}
+          <span className="Exercise-title">{exerciseName}</span>
+        </div>
         <span className="Exercise-sum">
           {renderValue().list.length} / {renderValue().sum}
         </span>
