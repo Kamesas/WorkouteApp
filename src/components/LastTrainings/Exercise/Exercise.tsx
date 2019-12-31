@@ -1,21 +1,52 @@
 import React, { useState } from "react";
 import { FaChevronCircleDown, FaChevronCircleUp } from "react-icons/fa";
 import "./Exercise.scss";
+import { useDispatch } from "react-redux";
+import { onUpdatetWorkoutData } from "../../../store/actions/actionWorkout";
+import { AiFillCloseCircle } from "react-icons/ai";
+import { FaEdit } from "react-icons/fa";
+import { TiWarning } from "react-icons/ti";
 
 interface IProps {
   [key: string]: any;
 }
 
-const Exercise: React.FC<IProps> = ({ exerciseName, exercisesData }) => {
-  const [showDetails, setShowDetails] = useState<boolean>(false);
+const Exercise: React.FC<IProps> = ({
+  exerciseName,
+  exercisesData,
+  workoutStore,
+  currDayId,
+  single = false,
+  isShowDetails = false
+}) => {
+  const [showDetails, setShowDetails] = useState<boolean>(isShowDetails);
+  const [editing, setEditing] = useState<boolean>(false);
+  const dispatch = useDispatch();
+
+  const deleteItem = (time: any) => {
+    if (!editing) return;
+    const newArrExercises = workoutStore[exerciseName].filter(
+      (item: any) => item.time !== time
+    );
+    const newData = { ...workoutStore, [`${exerciseName}`]: newArrExercises };
+    dispatch(onUpdatetWorkoutData(newData, currDayId));
+  };
 
   const renderValue = () => {
     let sum: any = 0;
 
     const list = exercisesData.map((val: any, i: number) => {
       sum += +val.numberOfItems;
+
       return (
-        <div key={i} className="Exercise-listItem">
+        <div
+          key={i}
+          className="Exercise-listItem"
+          onClick={() => deleteItem(val.time)}
+        >
+          {editing && (
+            <AiFillCloseCircle className="Exercise-listItem-delete" />
+          )}
           <span className="Exercise-listItem-numberOfItems">
             {val.numberOfItems}
           </span>
@@ -32,6 +63,15 @@ const Exercise: React.FC<IProps> = ({ exerciseName, exercisesData }) => {
 
   return (
     <div className="Exercise">
+      {single && (
+        <div className="Exercise-settings">
+          <FaEdit
+            onClick={() => setEditing(!editing)}
+            className="Exercise-edit"
+          />
+          {editing && <TiWarning className="Exercise-warning" />}
+        </div>
+      )}
       <div
         className="Exercise-header"
         onClick={() => setShowDetails(!showDetails)}

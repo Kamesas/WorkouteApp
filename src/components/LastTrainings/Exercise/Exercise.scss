@@ -1,6 +1,8 @@
 @import "../../../assets/styles/colors.scss";
 
 .Exercise {
+  position: relative;
+
   &-header {
     margin-top: 0.75em;
     cursor: pointer;
@@ -36,11 +38,39 @@
     padding: 0.25em 0;
   }
 
+  &-settings {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
+  &-edit,
+  &-warning {
+    color: $GREEN_1;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+
+  &-warning {
+    color: $YELLOW_1;
+  }
+
   &-listItem {
     padding: 0.35em;
     display: flex;
     align-items: center;
     flex-direction: column;
+    position: relative;
+
+    &-delete {
+      position: absolute;
+      cursor: pointer;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $RED_1;
+      font-size: 1.3em;
+    }
 
     &-numberOfItems {
       margin-bottom: 0.25em;

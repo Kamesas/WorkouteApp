@@ -10,6 +10,7 @@ const AddForm: React.FC<IProps> = ({
 }) => {
   const onSubmitHandler = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!valueAmount) return;
     onPostDate();
   };
 
