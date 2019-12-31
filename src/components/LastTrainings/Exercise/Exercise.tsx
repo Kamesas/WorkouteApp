@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-  FaChevronCircleDown,
-  FaChevronCircleUp,
-  FaDivide
-} from "react-icons/fa";
+import { FaChevronCircleDown, FaChevronCircleUp } from "react-icons/fa";
 import "./Exercise.scss";
 
 interface IProps {
