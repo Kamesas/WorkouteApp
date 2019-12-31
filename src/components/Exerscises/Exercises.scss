@@ -1,6 +1,9 @@
 @import "../../assets/styles/colors.scss";
 
 .Exercises {
+  width: 100%;
+  padding-left: 0.5em;
+
   &-select {
     color: $WHITE_1;
     width: 100%;
@@ -15,5 +18,11 @@
 
   &-option {
     color: $BLACK_2;
+  }
+
+  @media screen and (max-width: 920px) {
+    width: 100%;
+    padding-top: 1em;
+    padding-left: 0;
   }
 }

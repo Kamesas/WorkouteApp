@@ -35,4 +35,15 @@ body {
     margin-left: $height;
     padding: 2em;
   }
+
+  @media screen and (max-width: 480px) {
+    &-sideMenu {
+      display: none;
+    }
+
+    &-mainContent {
+      margin-left: 0;
+      padding: 0;
+    }
+  }
 }

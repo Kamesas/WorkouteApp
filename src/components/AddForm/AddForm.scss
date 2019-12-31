@@ -1,6 +1,9 @@
 @import "../../assets/styles/colors.scss";
 
 .AddForm {
+  width: 100%;
+  padding-right: 0.5em;
+
   &-input,
   &-button {
     color: $WHITE_1;
@@ -27,5 +30,10 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     border-radius: 0 1.75em 1.75em 0;
+  }
+
+  @media screen and (max-width: 920px) {
+    width: 100%;
+    padding-right: 0;
   }
 }
