@@ -3,9 +3,11 @@ import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import { workoutStore } from "./reducers/workoutReducer";
+import { authReducer } from "./reducers/authReducer";
 
 const rootReducer = combineReducers({
-  workoutStore
+  workoutStore,
+  authReducer
 });
 
 export default function configureStore() {

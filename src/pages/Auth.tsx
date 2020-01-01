@@ -1,49 +1,32 @@
 import React from "react";
+import { auth } from "../store/actions/actionAuth";
+import { useDispatch } from "react-redux";
 
 interface IProps {
   [key: string]: any;
 }
 
 const Auth: React.FC<IProps> = () => {
+  const dispatch = useDispatch();
+
   const loginHandler = () => {
     const registerBody = {
-      login: "test",
-      email: "testing4@gmal.com",
+      email: "testing@gmal.com",
       password: "12345678",
       returnSecureToken: true
     };
 
-    fetch(
-      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_FIREBASE_API_KEY}`,
-      {
-        method: "POST",
-        body: JSON.stringify(registerBody)
-      }
-    )
-      .then(res => console.log("res", res.json()))
-      .catch(err => console.log("err", err));
+    dispatch(auth(registerBody, true));
   };
 
   const registerHandler = () => {
     const registerBody = {
-      login: "test",
-      email: "testing4@gmal.com",
+      email: "testing@gmal.com",
       password: "12345678",
       returnSecureToken: true
     };
 
-    fetch(
-      `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_FIREBASE_API_KEY}`,
-      {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        method: "POST",
-        body: JSON.stringify(registerBody)
-      }
-    )
-      .then(res => console.log("res", res))
-      .catch(err => console.log("err", err));
+    dispatch(auth(registerBody, false));
   };
 
   return (
