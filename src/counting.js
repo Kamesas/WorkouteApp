@@ -1,4 +1,5 @@
 import { db } from "./workout-ec6f3-export";
+
 const copyDb = db;
 const dates = [];
 let newDB = {};
@@ -38,7 +39,7 @@ Object.keys(copyDb.Kamesas).forEach(item => {
         }
       }
 
-      //pull
+      //pull ups
 
       if (copyDb.Kamesas[item].exercise === "подтягивания") {
         if (!newDB[entity].pullUps) {
@@ -65,7 +66,7 @@ Object.keys(copyDb.Kamesas).forEach(item => {
         }
       }
 
-      // присед
+      // squats
       if (copyDb.Kamesas[item].exercise === "присед") {
         if (!newDB[entity].squats) {
           newDB[entity] = {

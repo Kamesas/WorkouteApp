@@ -2,8 +2,15 @@ import React from "react";
 import { menuItems } from "./model";
 import { NavLink } from "react-router-dom";
 import "./SideMenu.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../store/actions/actionAuth";
 
 const SideMenu: React.FC = () => {
+  const token = useSelector(({ authReducer }: any) => authReducer.token);
+  const dispatch = useDispatch();
+
+  console.log(token);
+
   return (
     <ul className="SideMenu">
       {menuItems.map(item => {
@@ -20,6 +27,8 @@ const SideMenu: React.FC = () => {
           </li>
         );
       })}
+
+      {token && <button onClick={() => dispatch(logout())}>logout</button>}
     </ul>
   );
 };

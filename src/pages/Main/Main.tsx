@@ -6,11 +6,11 @@ import {
   onGetWorkoutData,
   onUpdatetWorkoutData,
   onCreateWorkoutData
-} from "../store/actions/actionWorkout";
-import AddForm from "../components/AddForm/AddForm";
-import Exerscises from "../components/Exerscises/Exerscises";
-import TrainingList from "../components/TrainingList/TrainingList";
-import LastTrainings from "../components/LastTrainings/LastTrainings";
+} from "../../store/actions/actionWorkout";
+import AddForm from "../../components/AddForm/AddForm";
+import Exerscises from "../../components/Exerscises/Exerscises";
+import TrainingList from "../../components/TrainingList/TrainingList";
+import LastTrainings from "../../components/LastTrainings/LastTrainings";
 
 const Main: React.FC = () => {
   const dispatch = useDispatch();

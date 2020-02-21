@@ -3,11 +3,11 @@ import { Switch, Route, BrowserRouter } from "react-router-dom";
 import "./App.scss";
 import Header from "./components/Header/Header";
 import SideMenu from "./components/SideMenu/SideMenu";
-import "./conting";
+import "./counting";
 import { useDispatch } from "react-redux";
-import { logout, autoLogin } from "./store/actions/actionAuth";
+import { autoLogin } from "./store/actions/actionAuth";
 
-const Main = React.lazy(() => import("./pages/Main"));
+const Main = React.lazy(() => import("./pages/Main/Main"));
 const Auth = React.lazy(() => import("./pages/Auth"));
 
 const App: React.FC = () => {
@@ -15,6 +15,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     dispatch(autoLogin());
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -23,7 +24,6 @@ const App: React.FC = () => {
         <Header />
         <main className="App-main">
           <div className="App-sideMenu">
-            <button onClick={() => dispatch(logout())}>logout</button>
             <SideMenu />
           </div>
           <div className="App-mainContent">
