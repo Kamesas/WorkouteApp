@@ -1,9 +1,11 @@
 import { GET_WORKOUT_ACTION } from "./types";
 
-export const onGetWorkoutData = () => async (dispatch: Function) => {
+export const onGetWorkoutData = (userEmail: string) => async (
+  dispatch: Function
+) => {
   try {
     const res = await fetch(
-      "https://workout-ec6f3.firebaseio.com/kamesas.json"
+      `https://workout-ec6f3.firebaseio.com/${userEmail}.json`
     );
     const data = await res.json();
 
@@ -16,35 +18,38 @@ export const onGetWorkoutData = () => async (dispatch: Function) => {
   }
 };
 
-export const onCreateWorkoutData = (newData: any) => async (
+export const onCreateWorkoutData = (userEmail: string, newData: any) => async (
   dispatch: Function
 ) => {
+  console.log(userEmail);
   try {
-    await fetch("https://workout-ec6f3.firebaseio.com/kamesas.json", {
+    await fetch(`https://workout-ec6f3.firebaseio.com/${userEmail}.json`, {
       method: "POST",
       body: JSON.stringify(newData)
     });
 
-    return dispatch(onGetWorkoutData());
+    return dispatch(onGetWorkoutData(userEmail));
   } catch (err) {
     console.log(err);
   }
 };
 
-export const onUpdatetWorkoutData = (newData: any, currDayId: string) => async (
-  dispatch: Function
-) => {
+export const onUpdatetWorkoutData = (
+  userEmail: string,
+  newData: any,
+  currDayId: string
+) => async (dispatch: Function) => {
   console.log(newData, currDayId);
   try {
     await fetch(
-      `https://workout-ec6f3.firebaseio.com/kamesas/${currDayId}.json`,
+      `https://workout-ec6f3.firebaseio.com/${userEmail}/${currDayId}.json`,
       {
         method: "PUT",
         body: JSON.stringify(newData)
       }
     );
 
-    return dispatch(onGetWorkoutData());
+    return dispatch(onGetWorkoutData(userEmail));
   } catch (err) {
     console.log(err);
   }

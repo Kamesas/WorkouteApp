@@ -22,7 +22,7 @@ const formOptionData = {
 const AuthForm: React.FC<IProps> = ({ loginForm }) => {
   const [formOption, setFormOption] = useState<any>({ ...formOptionData });
 
-  const { email, login, password } = formOption;
+  const { email, password, login } = formOption;
   const dispatch = useDispatch();
 
   const onInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -80,6 +80,14 @@ const AuthForm: React.FC<IProps> = ({ loginForm }) => {
         name="email"
         placeholder="enter your email"
         value={email.inputValue}
+        onChange={e => onInputHandler(e)}
+        className="AuthForm-input"
+      />
+      <input
+        type="text"
+        name="login"
+        placeholder="enter your login"
+        value={login.inputValue}
         onChange={e => onInputHandler(e)}
         className="AuthForm-input"
       />

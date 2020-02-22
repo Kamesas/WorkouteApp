@@ -15,21 +15,30 @@ import LastTrainings from "../../components/LastTrainings/LastTrainings";
 const Main: React.FC = () => {
   const dispatch = useDispatch();
   const workoutStore = useSelector((state: any) => state.workoutStore);
+  const userEmail = useSelector(({ authReducer }: any) => {
+    if (authReducer.userData) {
+      return authReducer.userData.email;
+    }
+    return null;
+  });
   const [valueAmount, setValueAmount] = useState<string>("");
   const [selectedExercise, setExercise] = useState<string>("");
 
   useEffect(() => {
-    dispatch(onGetWorkoutData());
+    if (!userEmail) return;
+    dispatch(onGetWorkoutData(userEmail));
     // eslint-disable-next-line
   }, []);
 
   const onPostDate = () => {
-    Object.keys(workoutStore).length !== 0
+    if (!userEmail) return;
+    workoutStore && Object.keys(workoutStore).length !== 0
       ? onUpdateNewData(selectedExercise)
       : onCreateData();
   };
 
   const onCreateData = () => {
+    if (!userEmail) return;
     const newData = {
       date: dayjs().format("DD MM YYYY"),
       [`${selectedExercise}`]: [
@@ -40,11 +49,12 @@ const Main: React.FC = () => {
       ]
     };
 
-    dispatch(onCreateWorkoutData(newData));
+    dispatch(onCreateWorkoutData(userEmail, newData));
     setValueAmount("");
   };
 
   const onUpdateNewData = (selectedExercise: string) => {
+    if (!userEmail) return;
     const currDayId: any = Object.keys(workoutStore).find(item => {
       return workoutStore[item].date === dayjs().format("DD MM YYYY");
     });
@@ -70,7 +80,7 @@ const Main: React.FC = () => {
           }
         ];
       }
-      dispatch(onUpdatetWorkoutData(newData, currDayId));
+      dispatch(onUpdatetWorkoutData(userEmail, newData, currDayId));
     } else {
       newData = {
         date: dayjs().format("DD MM YYYY"),
@@ -82,7 +92,7 @@ const Main: React.FC = () => {
         ]
       };
 
-      dispatch(onCreateWorkoutData(newData));
+      dispatch(onCreateWorkoutData(userEmail, newData));
     }
 
     setValueAmount("");

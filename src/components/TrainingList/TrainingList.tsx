@@ -8,21 +8,22 @@ const TrainingList: React.FC<IProps> = ({ workoutStore, currDayId }) => {
 
   return (
     <div className="TrainingList">
-      {Object.keys(workoutStore[currDayId]).map((item, i) => {
-        if (item === "date") return null;
+      {workoutStore &&
+        Object.keys(workoutStore[currDayId]).map((item, i) => {
+          if (item === "date") return null;
 
-        return (
-          <Exercise
-            key={i}
-            single={true}
-            isShowDetails={true}
-            currDayId={currDayId}
-            workoutStore={workoutStore[currDayId]}
-            exerciseName={item}
-            exercisesData={workoutStore[currDayId][`${item}`]}
-          />
-        );
-      })}
+          return (
+            <Exercise
+              key={i}
+              single={true}
+              isShowDetails={true}
+              currDayId={currDayId}
+              workoutStore={workoutStore[currDayId]}
+              exerciseName={item}
+              exercisesData={workoutStore[currDayId][`${item}`]}
+            />
+          );
+        })}
     </div>
   );
 };

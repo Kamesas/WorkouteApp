@@ -22,7 +22,7 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(getUserData(token));
+    token && dispatch(getUserData(token));
     // eslint-disable-next-line
   }, [token]);
 

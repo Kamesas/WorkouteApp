@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaChevronCircleDown, FaChevronCircleUp } from "react-icons/fa";
 import "./Exercise.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { onUpdatetWorkoutData } from "../../../store/actions/actionWorkout";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
@@ -22,6 +22,14 @@ const Exercise: React.FC<IProps> = ({
   const [showDetails, setShowDetails] = useState<boolean>(isShowDetails);
   const [editing, setEditing] = useState<boolean>(false);
   const dispatch = useDispatch();
+  const userEmail = useSelector(({ authReducer }: any) => {
+    if (authReducer.userData) {
+      return authReducer.userData.email;
+    }
+    return null;
+  });
+
+  if (userEmail) return null;
 
   const deleteItem = (time: any) => {
     if (!editing) return;
@@ -29,7 +37,7 @@ const Exercise: React.FC<IProps> = ({
       (item: any) => item.time !== time
     );
     const newData = { ...workoutStore, [`${exerciseName}`]: newArrExercises };
-    dispatch(onUpdatetWorkoutData(newData, currDayId));
+    userEmail && dispatch(onUpdatetWorkoutData(userEmail, newData, currDayId));
   };
 
   const renderValue = () => {
