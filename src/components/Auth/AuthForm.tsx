@@ -84,14 +84,6 @@ const AuthForm: React.FC<IProps> = ({ loginForm }) => {
         className="AuthForm-input"
       />
       <input
-        type="text"
-        name="login"
-        placeholder="enter your login"
-        value={login.inputValue}
-        onChange={e => onInputHandler(e)}
-        className="AuthForm-input"
-      />
-      <input
         type="password"
         name="password"
         placeholder="enter your password"
@@ -100,9 +92,13 @@ const AuthForm: React.FC<IProps> = ({ loginForm }) => {
         className="AuthForm-input"
       />
       {loginForm ? (
-        <button onClick={loginHandler}>login</button>
+        <button className="AuthForm-submitButton" onClick={loginHandler}>
+          login
+        </button>
       ) : (
-        <button onClick={registerHandler}>register</button>
+        <button className="AuthForm-submitButton" onClick={registerHandler}>
+          register
+        </button>
       )}
     </form>
   );

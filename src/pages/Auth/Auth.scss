@@ -1,0 +1,99 @@
+@import "../../assets/styles/colors.scss";
+
+.Auth {
+  &-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  &-wrapForm {
+    display: block;
+    margin: 0 auto;
+    max-width: 600px;
+    border: 1px solid $WHITE_1;
+    border-radius: 0.5rem;
+    padding: 2rem;
+  }
+
+  // Auth toggler
+  $speed3: cubic-bezier(0.26, 0.48, 0.08, 0.9);
+  $height: 28px;
+
+  &-formToggler {
+    position: relative;
+    display: inline-block;
+    width: calc(#{$height} * 2);
+    height: $height;
+    -webkit-transform: translateY(40%);
+    -moz-transform: translateY(40%);
+    -ms-transform: translateY(40%);
+    -o-transform: translateY(40%);
+    transform: translateY(40%);
+
+    // Closing Animation
+    -webkit-transition: transform 0.17s $speed3;
+    -moz-transition: transform 0.17s $speed3;
+    -ms-transition: transform 0.17s $speed3;
+    -o-transition: transform 0.17s $speed3;
+    transition: transform 0.17s $speed3;
+
+    &-input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+  }
+
+  /* The slider */
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $BLACK_1;
+    box-shadow: 0 3px 64px rgba($BLACK_1, 0.1);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border: 1px solid $WHITE_1;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: calc(#{$height} - 4px);
+    width: calc(#{$height} - 4px);
+    left: 1px;
+    bottom: 1px;
+    background-color: white;
+    box-shadow: 0 3px 64px rgba($BLACK_1, 0.16);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+
+  input:checked + .slider {
+    background-color: $BLACK_1;
+  }
+
+  input:focus + .slider {
+    box-shadow: none;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX($height);
+    -ms-transform: translateX($height);
+    transform: translateX($height);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: $height;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+}
