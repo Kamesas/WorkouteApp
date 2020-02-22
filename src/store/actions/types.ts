@@ -7,3 +7,4 @@ export const CREATE_WORKOUT_ACTION = "CREATE_WORKOUT_ACTION";
 export const AUTH = "AUTH";
 export const AUTH_SUCCESS = "AUTH_SUCCESS";
 export const AUTH_LOGOUT = "AUTH_LOGOUT";
+export const GET_USER_DATA = "GET_USER_DATA";

@@ -1,4 +1,4 @@
-import { AUTH_SUCCESS, AUTH_LOGOUT } from "./types";
+import { AUTH_SUCCESS, AUTH_LOGOUT, GET_USER_DATA } from "./types";
 
 export const auth = (registerBody: any, isLogin: boolean) => {
   let url: string =
@@ -26,19 +26,41 @@ export const auth = (registerBody: any, isLogin: boolean) => {
       const expirationDate =
         +new Date(new Date().getTime()) + body.expiresIn * 1000;
 
-      console.log(expirationDate);
+      console.log(body);
 
       localStorage.setItem("token", body.idToken);
       localStorage.setItem("userId", body.localId);
       localStorage.setItem("expirationDate", JSON.stringify(expirationDate));
 
-      console.log(body);
-
       dispatch(authSuccess(body.idToken));
+      dispatch(getUserData(body.idToken));
       dispatch(autoLogout(body.expiresIn));
-      // dispatch({ type: AUTH, payload: body });
     } catch (error) {
       console.log("err", error);
+    }
+  };
+};
+
+export const getUserData = (token: string) => {
+  const url = "https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=";
+  return async (dispatch: any) => {
+    try {
+      const res = await fetch(
+        `${url}${process.env.REACT_APP_FIREBASE_API_KEY}`,
+        {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "POST",
+          body: JSON.stringify({ idToken: token })
+        }
+      );
+
+      const body = await res.json();
+
+      dispatch({ type: GET_USER_DATA, payload: body.users[0] });
+    } catch (error) {
+      console.log("error getUserData");
     }
   };
 };

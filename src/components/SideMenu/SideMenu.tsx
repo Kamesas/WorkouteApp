@@ -6,10 +6,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/actions/actionAuth";
 
 const SideMenu: React.FC = () => {
-  const token = useSelector(({ authReducer }: any) => authReducer.token);
+  const token = useSelector(({ authReducer }: any) => {
+    return authReducer.token;
+  });
   const dispatch = useDispatch();
-
-  console.log(token);
 
   return (
     <ul className="SideMenu">

@@ -19,7 +19,7 @@ const formOptionData = {
   }
 };
 
-const AuthForm: React.FC<IProps> = () => {
+const AuthForm: React.FC<IProps> = ({ loginForm }) => {
   const [formOption, setFormOption] = useState<any>({ ...formOptionData });
 
   const { email, login, password } = formOption;
@@ -70,8 +70,7 @@ const AuthForm: React.FC<IProps> = () => {
 
   const onSubmitHandler = (e: FormEvent) => {
     e.preventDefault();
-    // loginHandler();
-    registerHandler();
+    loginForm ? loginHandler() : registerHandler();
   };
 
   return (
@@ -100,8 +99,11 @@ const AuthForm: React.FC<IProps> = () => {
         onChange={e => onInputHandler(e)}
         className="AuthForm-input"
       />
-      <button onClick={registerHandler}>register</button>
-      <button onClick={loginHandler}>login</button>
+      {loginForm ? (
+        <button onClick={loginHandler}>login</button>
+      ) : (
+        <button onClick={registerHandler}>register</button>
+      )}
     </form>
   );
 };
