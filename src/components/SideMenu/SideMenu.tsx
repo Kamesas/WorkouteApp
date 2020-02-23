@@ -3,7 +3,11 @@ import { menuItems } from "./model";
 import { NavLink } from "react-router-dom";
 import "./SideMenu.scss";
 
-const SideMenu: React.FC = () => {
+interface IProps {
+  setShowMenu: (showMenu: boolean) => void;
+}
+
+const SideMenu: React.FC<IProps> = ({ setShowMenu }) => {
   return (
     <ul className="SideMenu">
       {menuItems.map(item => {
@@ -14,6 +18,7 @@ const SideMenu: React.FC = () => {
               exact={item.exact}
               className="SideMenu-link"
               activeClassName="SideMenu-link-active"
+              onClick={() => setShowMenu(false)}
             >
               {item.title}
             </NavLink>

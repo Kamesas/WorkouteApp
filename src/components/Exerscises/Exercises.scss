@@ -4,6 +4,15 @@
   width: 100%;
   padding-left: 0.5em;
 
+  // &-label {
+  //   position: relative;
+
+  //   &-icon {
+  //     position: absolute;
+  //     right: 1rem;
+  //   }
+  // }
+
   &-select {
     color: $WHITE_1;
     width: 100%;
@@ -14,6 +23,8 @@
     border-radius: 1.75em;
     border-right: none;
     cursor: pointer;
+    -moz-appearance: none;
+    -webkit-appearance: none;
   }
 
   &-option {

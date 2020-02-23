@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { exercises } from "./model";
 import "./Exercises.scss";
 import { IProps } from "./interfaces";
+// import { FiChevronDown } from "react-icons/fi";
 
 const Exerscises: React.FC<IProps> = ({ setExercise, selectedExercise }) => {
   useEffect(() => {
@@ -16,6 +17,7 @@ const Exerscises: React.FC<IProps> = ({ setExercise, selectedExercise }) => {
   return (
     <div className="Exercises">
       <label className="Exercises-label">
+        {/*  <FiChevronDown size={24} className="Exercises-label-icon" /> */}
         <select
           value={selectedExercise}
           className="Exercises-select"

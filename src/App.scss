@@ -1,5 +1,9 @@
 @import "./assets/styles/colors.scss";
 
+* {
+  outline: none;
+}
+
 $height: 80px;
 
 body {
@@ -48,6 +52,7 @@ body {
 
     &-mainContent {
       margin-left: 0;
+      padding: 2rem 1rem;
     }
   }
 }

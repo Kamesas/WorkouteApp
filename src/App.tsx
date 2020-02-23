@@ -37,7 +37,7 @@ const App: React.FC = () => {
           <div
             className={`App-sideMenu ${showMenu ? "App-sideMenu-showed" : ""}`}
           >
-            <SideMenu />
+            <SideMenu setShowMenu={setShowMenu} />
           </div>
           <div className="App-mainContent">
             <React.Suspense fallback={null}>

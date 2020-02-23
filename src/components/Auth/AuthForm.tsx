@@ -2,22 +2,11 @@ import React, { useState, FormEvent } from "react";
 import { auth } from "../../store/actions/actionAuth";
 import { useDispatch } from "react-redux";
 import "./AuthForm.scss";
+import { formOptionData } from "./model";
 
 interface IProps {
   [key: string]: any;
 }
-
-const formOptionData = {
-  email: {
-    inputValue: ""
-  },
-  login: {
-    inputValue: ""
-  },
-  password: {
-    inputValue: ""
-  }
-};
 
 const AuthForm: React.FC<IProps> = ({ loginForm }) => {
   const [formOption, setFormOption] = useState<any>({ ...formOptionData });
