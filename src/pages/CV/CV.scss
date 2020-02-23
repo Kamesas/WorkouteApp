@@ -3,4 +3,35 @@
 .CV {
   background-color: $BLACK_1;
   color: $WHITE_1;
+
+  &-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  &-birthday {
+    margin-bottom: 1rem;
+  }
+
+  &-contacts,
+  &-education,
+  &-skills {
+    &-title {
+      text-transform: uppercase;
+    }
+
+    &-item {
+      margin-bottom: 0.5rem;
+    }
+
+    &-link {
+      color: lighten($BLUE_1, 10%);
+      letter-spacing: 1px;
+      text-decoration: none;
+
+      &:hover {
+        border-bottom: 1px solid lighten($BLUE_1, 10%);
+      }
+    }
+  }
 }
