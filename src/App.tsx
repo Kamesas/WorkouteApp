@@ -9,6 +9,8 @@ import { autoLogin, getUserData } from "./store/actions/actionAuth";
 
 const Main = React.lazy(() => import("./pages/Main/Main"));
 const Auth = React.lazy(() => import("./pages/Auth/Auth"));
+const CV = React.lazy(() => import("./pages/CV/CV"));
+
 const TEST_TOKEN = process.env.REACT_APP_TEST_TOKEN;
 
 const App: React.FC = () => {
@@ -25,7 +27,6 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    console.log(token);
     dispatch(getUserData(token));
     // eslint-disable-next-line
   }, [token]);
@@ -43,6 +44,7 @@ const App: React.FC = () => {
           <div className="App-mainContent">
             <React.Suspense fallback={null}>
               <Switch>
+                <Route path="/cv" component={CV} />
                 <Route path="/auth" component={Auth} />
                 <Route path="/" component={Main} />
               </Switch>
