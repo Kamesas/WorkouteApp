@@ -75,6 +75,9 @@ const AuthForm: React.FC<IProps> = ({ loginForm }) => {
 
   return (
     <form onSubmit={onSubmitHandler} className="AuthForm">
+      <div className="AuthForm-info">
+        For testing you can use " test@gmail.com " and " 123456 "
+      </div>
       <input
         type="email"
         name="email"

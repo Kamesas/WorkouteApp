@@ -11,14 +11,12 @@ const Main = React.lazy(() => import("./pages/Main/Main"));
 const Auth = React.lazy(() => import("./pages/Auth/Auth"));
 const CV = React.lazy(() => import("./pages/CV/CV"));
 
-const TEST_TOKEN = process.env.REACT_APP_TEST_TOKEN;
-
 const App: React.FC = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
 
   const dispatch = useDispatch();
   const token = useSelector(({ authReducer }: any) => {
-    return authReducer.token ? authReducer.token : TEST_TOKEN;
+    return authReducer.token;
   });
 
   useEffect(() => {
@@ -27,7 +25,7 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(getUserData(token));
+    token && dispatch(getUserData(token));
     // eslint-disable-next-line
   }, [token]);
 
