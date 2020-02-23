@@ -52,7 +52,7 @@ const CV = () => {
       <div className="CV-education">
         <div className="CV-education-title"> Education:</div>
         <ul className="CV-education-list">
-          <li className="CV-education-item">School for grades 1-11</li>
+          <li className="CV-education-item">General education school</li>
           <li className="CV-education-item">
             <a
               href="https://www.znu.edu.ua/frontpage/3594.eng.html"
