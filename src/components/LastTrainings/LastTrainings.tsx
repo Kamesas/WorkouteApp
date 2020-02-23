@@ -13,7 +13,6 @@ const LastTrainings: React.FC<IProps> = ({ workoutStore }) => {
       <div className="LastTrainings-header">Last trainings</div>
 
       {workoutStore &&
-        Object.keys(workoutStore).length > 0 &&
         Object.keys(workoutStore)
           .reverse()
           .slice(0, 3)

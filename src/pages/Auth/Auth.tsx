@@ -20,7 +20,9 @@ const Auth: React.FC<IProps> = () => {
         />
         <span className="slider round"></span>
       </label>
-      <div className="Auth-title">Auth</div>
+      <div className="Auth-title">
+        {loginForm ? "Login" : "Registration"} form
+      </div>
 
       <div className="Auth-wrapForm">
         <AuthForm loginForm={loginForm} />

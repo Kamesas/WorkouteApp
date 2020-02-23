@@ -29,7 +29,7 @@ const Exercise: React.FC<IProps> = ({
     return null;
   });
 
-  if (userEmail) return null;
+  if (!userEmail) return null;
 
   const deleteItem = (time: any) => {
     if (!editing) return;

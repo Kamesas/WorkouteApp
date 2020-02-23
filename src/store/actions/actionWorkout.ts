@@ -1,11 +1,13 @@
-import { GET_WORKOUT_ACTION } from "./types";
+import { GET_WORKOUT_ACTION, RESET_STATE } from "./types";
 
 export const onGetWorkoutData = (userEmail: string) => async (
   dispatch: Function
 ) => {
   try {
+    const user = userEmail && userEmail.split("@")[0];
+
     const res = await fetch(
-      `https://workout-ec6f3.firebaseio.com/${userEmail}.json`
+      `https://workout-ec6f3.firebaseio.com/${user}.json`
     );
     const data = await res.json();
 
@@ -21,9 +23,9 @@ export const onGetWorkoutData = (userEmail: string) => async (
 export const onCreateWorkoutData = (userEmail: string, newData: any) => async (
   dispatch: Function
 ) => {
-  console.log(userEmail);
   try {
-    await fetch(`https://workout-ec6f3.firebaseio.com/${userEmail}.json`, {
+    const user = userEmail.split("@")[0];
+    await fetch(`https://workout-ec6f3.firebaseio.com/${user}.json`, {
       method: "POST",
       body: JSON.stringify(newData)
     });
@@ -39,10 +41,10 @@ export const onUpdatetWorkoutData = (
   newData: any,
   currDayId: string
 ) => async (dispatch: Function) => {
-  console.log(newData, currDayId);
   try {
+    const user = userEmail.split("@")[0];
     await fetch(
-      `https://workout-ec6f3.firebaseio.com/${userEmail}/${currDayId}.json`,
+      `https://workout-ec6f3.firebaseio.com/${user}/${currDayId}.json`,
       {
         method: "PUT",
         body: JSON.stringify(newData)
@@ -53,6 +55,12 @@ export const onUpdatetWorkoutData = (
   } catch (err) {
     console.log(err);
   }
+};
+
+export const onResetState = () => {
+  return {
+    type: RESET_STATE
+  };
 };
 
 // export const onDeleteWorkoutData = (id: any) => {

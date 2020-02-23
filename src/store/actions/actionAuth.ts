@@ -1,7 +1,6 @@
 import { AUTH_SUCCESS, AUTH_LOGOUT, GET_USER_DATA } from "./types";
 
 export const auth = (registerBody: any, isLogin: boolean) => {
-  console.log(registerBody);
   let url: string =
     "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
 
@@ -26,8 +25,6 @@ export const auth = (registerBody: any, isLogin: boolean) => {
 
       // const expirationDate =
       //   +new Date(new Date().getTime()) + body.expiresIn * 1000;
-
-      console.log(body);
 
       localStorage.setItem("token", body.idToken);
       localStorage.setItem("userId", body.localId);

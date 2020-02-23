@@ -28,7 +28,7 @@ const Main: React.FC = () => {
     if (!userEmail) return;
     dispatch(onGetWorkoutData(userEmail));
     // eslint-disable-next-line
-  }, []);
+  }, [userEmail]);
 
   const onPostDate = () => {
     if (!userEmail) return;
@@ -55,6 +55,7 @@ const Main: React.FC = () => {
 
   const onUpdateNewData = (selectedExercise: string) => {
     if (!userEmail) return;
+
     const currDayId: any = Object.keys(workoutStore).find(item => {
       return workoutStore[item].date === dayjs().format("DD MM YYYY");
     });

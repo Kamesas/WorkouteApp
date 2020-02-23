@@ -11,7 +11,6 @@ const TrainingList: React.FC<IProps> = ({ workoutStore, currDayId }) => {
       {workoutStore &&
         Object.keys(workoutStore[currDayId]).map((item, i) => {
           if (item === "date") return null;
-
           return (
             <Exercise
               key={i}

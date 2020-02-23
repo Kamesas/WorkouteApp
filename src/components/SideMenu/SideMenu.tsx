@@ -4,12 +4,18 @@ import { NavLink } from "react-router-dom";
 import "./SideMenu.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/actions/actionAuth";
+import { onResetState } from "../../store/actions/actionWorkout";
 
 const SideMenu: React.FC = () => {
   const token = useSelector(({ authReducer }: any) => {
     return authReducer.token;
   });
   const dispatch = useDispatch();
+
+  const logOutHandler = () => {
+    dispatch(logout());
+    dispatch(onResetState());
+  };
 
   return (
     <ul className="SideMenu">
@@ -28,7 +34,7 @@ const SideMenu: React.FC = () => {
         );
       })}
 
-      {token && <button onClick={() => dispatch(logout())}>logout</button>}
+      {token && <button onClick={logOutHandler}>logout</button>}
     </ul>
   );
 };

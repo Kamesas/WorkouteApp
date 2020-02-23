@@ -1,4 +1,4 @@
-import { GET_WORKOUT_ACTION } from "../actions/types";
+import { GET_WORKOUT_ACTION, RESET_STATE } from "../actions/types";
 
 const initialState: any = null;
 
@@ -6,6 +6,9 @@ export const workoutStore = (state = initialState, action: any) => {
   switch (action.type) {
     case GET_WORKOUT_ACTION:
       return { ...state, ...action.payload };
+
+    case RESET_STATE:
+      return null;
 
     default:
       return state;
