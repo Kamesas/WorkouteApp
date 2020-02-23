@@ -3,8 +3,14 @@ import { NavLink } from "react-router-dom";
 import "./Header.scss";
 import dayjs from "dayjs";
 import { useSelector } from "react-redux";
+import { AiOutlineMenu } from "react-icons/ai";
 
-const Header: React.FC = () => {
+interface IProps {
+  setShowMenu: (showMenu: boolean) => void;
+  showMenu: boolean;
+}
+
+const Header: React.FC<IProps> = ({ setShowMenu, showMenu }) => {
   const userName = useSelector(({ authReducer }: any) => {
     if (authReducer.userData) {
       return authReducer.userData.displayName
@@ -16,12 +22,15 @@ const Header: React.FC = () => {
 
   return (
     <div className="Header">
+      <button className="Header-menu" onClick={() => setShowMenu(!showMenu)}>
+        <AiOutlineMenu size={18} />
+      </button>
       <NavLink to="/" className="Header-logo">
         Workout App
       </NavLink>
-      <div>{dayjs().format("DD MMM YYYY")}</div>
-      <div>{userName}</div>
-      <div className="Header-user">A</div>
+      <div className="Header-date">{dayjs().format("DD MMM YYYY")}</div>
+
+      <div className="Header-user">{userName && userName.slice(0, 1)}</div>
     </div>
   );
 };

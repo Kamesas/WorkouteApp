@@ -16,12 +16,23 @@
     padding: 2rem;
   }
 
+  @media screen and (max-width: 480px) {
+    &-title {
+      text-align: left;
+    }
+
+    &-wrapForm {
+      margin: 0 1rem;
+    }
+  }
+
   // Auth toggler
   $speed3: cubic-bezier(0.26, 0.48, 0.08, 0.9);
   $height: 28px;
 
   &-formToggler {
-    position: relative;
+    position: absolute;
+    right: 1rem;
     display: inline-block;
     width: calc(#{$height} * 2);
     height: $height;
