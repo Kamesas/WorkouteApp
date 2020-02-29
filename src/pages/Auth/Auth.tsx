@@ -11,8 +11,8 @@ interface IProps {
 
 const Auth: React.FC<IProps> = () => {
   const [loginForm, setLoginForm] = useState<boolean>(true);
-  const token = useSelector(({ authReducer }: any) => {
-    return authReducer.token;
+  const userData = useSelector(({ authReducer }: any) => {
+    return authReducer.userData;
   });
   const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ const Auth: React.FC<IProps> = () => {
 
   return (
     <div className="Auth">
-      {token ? (
+      {userData ? (
         <button className="AuthForm-submitButton" onClick={logOutHandler}>
           logout
         </button>

@@ -12,7 +12,11 @@ import Exerscises from "../../components/Exerscises/Exerscises";
 import TrainingList from "../../components/TrainingList/TrainingList";
 import LastTrainings from "../../components/LastTrainings/LastTrainings";
 
-const Main: React.FC = () => {
+interface IProps {
+  [key: string]: any;
+}
+
+const Main: React.FC<IProps> = ({ history }) => {
   const dispatch = useDispatch();
   const workoutStore = useSelector((state: any) => state.workoutStore);
   const userEmail = useSelector(({ authReducer }: any) => {
@@ -25,7 +29,11 @@ const Main: React.FC = () => {
   const [selectedExercise, setExercise] = useState<string>("");
 
   useEffect(() => {
-    if (!userEmail) return;
+    console.log(userEmail);
+    if (!userEmail) {
+      history.push("/auth");
+      return;
+    }
     dispatch(onGetWorkoutData(userEmail));
     // eslint-disable-next-line
   }, [userEmail]);

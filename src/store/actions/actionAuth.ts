@@ -22,16 +22,11 @@ export const auth = (registerBody: any, isLogin: boolean) => {
         }
       );
       const body = await response.json();
-
-      // const expirationDate =
-      //   +new Date(new Date().getTime()) + body.expiresIn * 1000;
-
+      // console.log(body);
       localStorage.setItem("token", body.idToken);
       localStorage.setItem("userId", body.localId);
-      // localStorage.setItem("expirationDate", JSON.stringify(expirationDate));
 
       dispatch(authSuccess(body.idToken));
-      // dispatch(autoLogout(body.expiresIn));
     } catch (error) {
       console.log("err", error);
     }
@@ -58,6 +53,7 @@ export const getUserData = (token: string) => {
       dispatch({ type: GET_USER_DATA, payload: body.users[0] });
     } catch (error) {
       console.log("error getUserData");
+      logout();
     }
   };
 };
@@ -69,18 +65,9 @@ export const authSuccess = (token: string) => {
   };
 };
 
-/* export const autoLogout = (time: string) => {
-  return (dispatch: any) => {
-    setTimeout(() => {
-      dispatch(logout());
-    }, +time * 1000);
-  };
-}; */
-
 export const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("userId");
-  localStorage.removeItem("expirationDate");
 
   return {
     type: AUTH_LOGOUT
@@ -95,20 +82,6 @@ export const autoLogin = () => {
       dispatch(logout());
     } else {
       dispatch(authSuccess(token));
-
-      /*  const expirationDate: any = localStorage.getItem("expirationDate")
-        ? localStorage.getItem("expirationDate")
-        : 0;
-
-      if (expirationDate <= new Date().getTime()) {
-        dispatch(logout());
-      } else {
-        dispatch(authSuccess(token));
-
-        // const timeLogout = (expirationDate - +new Date()) / 1000;
-
-        // dispatch(autoLogout(timeLogout.toString()));
-      } */
     }
   };
 };
