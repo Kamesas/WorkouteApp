@@ -16,7 +16,7 @@ interface IProps {
   [key: string]: any;
 }
 
-const Main: React.FC<IProps> = ({ history }) => {
+const Main: React.FC<IProps> = () => {
   const dispatch = useDispatch();
   const workoutStore = useSelector((state: any) => state.workoutStore);
   const userEmail = useSelector(({ authReducer }: any) => {
@@ -29,11 +29,6 @@ const Main: React.FC<IProps> = ({ history }) => {
   const [selectedExercise, setExercise] = useState<string>("");
 
   useEffect(() => {
-    console.log(userEmail);
-    if (!userEmail) {
-      history.push("/auth");
-      return;
-    }
     dispatch(onGetWorkoutData(userEmail));
     // eslint-disable-next-line
   }, [userEmail]);

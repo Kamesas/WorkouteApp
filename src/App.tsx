@@ -4,8 +4,8 @@ import "./App.scss";
 import Header from "./components/Header/Header";
 import SideMenu from "./components/SideMenu/SideMenu";
 import "./counting";
-import { useDispatch, useSelector } from "react-redux";
-import { autoLogin, getUserData } from "./store/actions/actionAuth";
+import { getUserData } from "./store/actions/actionAuth";
+import { useDispatch } from "react-redux";
 
 const Main = React.lazy(() => import("./pages/Main/Main"));
 const Auth = React.lazy(() => import("./pages/Auth/Auth"));
@@ -13,21 +13,15 @@ const CV = React.lazy(() => import("./pages/CV/CV"));
 
 const App: React.FC = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
-
   const dispatch = useDispatch();
-  const token = useSelector(({ authReducer }: any) => {
-    return authReducer.token;
-  });
 
   useEffect(() => {
-    dispatch(autoLogin());
-    // eslint-disable-next-line
+    const userData = localStorage.getItem("WorkoutUserData");
+
+    if (userData) {
+      dispatch(getUserData(JSON.parse(userData)));
+    }
   }, []);
-
-  useEffect(() => {
-    token && dispatch(getUserData(token));
-    // eslint-disable-next-line
-  }, [token]);
 
   return (
     <div className="App">
