@@ -44,6 +44,7 @@ const AuthForm: React.FC<IProps> = ({ loginForm }) => {
       password: formOption.password.inputValue,
       returnSecureToken: true
     };
+
     dispatch(auth(loginBody, true));
   };
 

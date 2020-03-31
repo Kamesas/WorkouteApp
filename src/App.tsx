@@ -21,7 +21,7 @@ const App: React.FC = () => {
     if (userData) {
       dispatch(getUserData(JSON.parse(userData)));
     }
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">
