@@ -1,8 +1,10 @@
 @import "../../assets/styles/colors.scss";
 
 .AddForm {
-  width: 100%;
   padding-right: 0.5em;
+  // display: flex;
+  flex: 1 1 50%;
+  border: 1px solid red;
 
   &-input,
   &-button {
@@ -14,10 +16,15 @@
 
   &-input {
     box-sizing: border-box;
-    width: 80%;
     padding-right: 2em;
-    border-radius: 1.75em 0 0 1.75em;
-    border-right: none;
+
+    &-weight {
+      border-radius: 1.75em 0 0 1.75em;
+    }
+
+    &-times {
+      border-radius: 0;
+    }
 
     &::placeholder {
       color: $WHITE_2;
@@ -26,7 +33,6 @@
   }
 
   &-button {
-    width: 20%;
     text-transform: uppercase;
     letter-spacing: 2px;
     border-radius: 0 1.75em 1.75em 0;

@@ -17,7 +17,7 @@ const Exercise: React.FC<IProps> = ({
   workoutStore,
   currDayId,
   single = false,
-  isShowDetails = false
+  isShowDetails = false,
 }) => {
   const [showDetails, setShowDetails] = useState<boolean>(isShowDetails);
   const [editing, setEditing] = useState<boolean>(false);
@@ -56,7 +56,7 @@ const Exercise: React.FC<IProps> = ({
             <AiFillCloseCircle className="Exercise-listItem-delete" />
           )}
           <span className="Exercise-listItem-numberOfItems">
-            {val.numberOfItems}
+            {val.valueWeight && `${val.valueWeight} /`} {val.numberOfItems}
           </span>
           <span className="Exercise-listItem-time">{val.time}</span>
         </div>
@@ -65,7 +65,7 @@ const Exercise: React.FC<IProps> = ({
 
     return {
       list,
-      sum
+      sum,
     };
   };
 

@@ -1,8 +1,10 @@
 @import "../../assets/styles/colors.scss";
 
 .Exercises {
-  width: 100%;
   padding-left: 0.5em;
+  flex: 1 1 50%;
+  width: 100%;
+  border: 1px solid #000;
 
   // &-label {
   //   position: relative;

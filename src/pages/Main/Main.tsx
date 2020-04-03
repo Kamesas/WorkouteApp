@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   onGetWorkoutData,
   onUpdatetWorkoutData,
-  onCreateWorkoutData
+  onCreateWorkoutData,
 } from "../../store/actions/actionWorkout";
 import AddForm from "../../components/AddForm/AddForm";
 import Exerscises from "../../components/Exerscises/Exerscises";
@@ -26,6 +26,7 @@ const Main: React.FC<IProps> = () => {
     return null;
   });
   const [valueAmount, setValueAmount] = useState<string>("");
+  const [valueWeight, setValueWeight] = useState<string>("");
   const [selectedExercise, setExercise] = useState<string>("");
 
   useEffect(() => {
@@ -47,19 +48,21 @@ const Main: React.FC<IProps> = () => {
       [`${selectedExercise}`]: [
         {
           numberOfItems: valueAmount,
-          time: dayjs().format("HH:mm:ss")
-        }
-      ]
+          valueWeight: valueWeight,
+          time: dayjs().format("HH:mm:ss"),
+        },
+      ],
     };
 
     dispatch(onCreateWorkoutData(userEmail, newData));
     setValueAmount("");
+    setValueWeight("");
   };
 
   const onUpdateNewData = (selectedExercise: string) => {
     if (!userEmail) return;
 
-    const currDayId: any = Object.keys(workoutStore).find(item => {
+    const currDayId: any = Object.keys(workoutStore).find((item) => {
       return workoutStore[item].date === dayjs().format("DD MM YYYY");
     });
 
@@ -73,15 +76,17 @@ const Main: React.FC<IProps> = () => {
           ...workoutStore[currDayId][`${selectedExercise}`],
           {
             numberOfItems: valueAmount,
-            time: dayjs().format("HH:mm:ss")
-          }
+            valueWeight: valueWeight,
+            time: dayjs().format("HH:mm:ss"),
+          },
         ];
       } else {
         newData[`${selectedExercise}`] = [
           {
             numberOfItems: valueAmount,
-            time: dayjs().format("HH:mm:ss")
-          }
+            valueWeight: valueWeight,
+            time: dayjs().format("HH:mm:ss"),
+          },
         ];
       }
       dispatch(onUpdatetWorkoutData(userEmail, newData, currDayId));
@@ -91,20 +96,22 @@ const Main: React.FC<IProps> = () => {
         [`${selectedExercise}`]: [
           {
             numberOfItems: valueAmount,
-            time: dayjs().format("HH:mm:ss")
-          }
-        ]
+            valueWeight: valueWeight,
+            time: dayjs().format("HH:mm:ss"),
+          },
+        ],
       };
 
       dispatch(onCreateWorkoutData(userEmail, newData));
     }
 
     setValueAmount("");
+    setValueWeight("");
   };
 
   const currDayId: any =
     workoutStore &&
-    Object.keys(workoutStore).find(item => {
+    Object.keys(workoutStore).find((item) => {
       return workoutStore[item].date === dayjs().format("DD MM YYYY");
     });
 
@@ -115,6 +122,8 @@ const Main: React.FC<IProps> = () => {
           <AddForm
             valueAmount={valueAmount}
             setValueAmount={setValueAmount}
+            valueWeight={valueWeight}
+            setValueWeight={setValueWeight}
             onPostDate={onPostDate}
             selectedExercise={selectedExercise}
           />
