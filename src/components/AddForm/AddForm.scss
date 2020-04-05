@@ -1,10 +1,7 @@
 @import "../../assets/styles/colors.scss";
 
 .AddForm {
-  padding-right: 0.5em;
-  // display: flex;
   flex: 1 1 50%;
-  border: 1px solid red;
 
   &-input,
   &-button {
@@ -17,7 +14,7 @@
   &-input {
     box-sizing: border-box;
     padding-right: 2em;
-
+    width: 37%;
     &-weight {
       border-radius: 1.75em 0 0 1.75em;
     }
@@ -41,6 +38,7 @@
 
   @media screen and (max-width: 920px) {
     width: 100%;
-    padding-right: 0;
+    display: flex;
+    justify-content: center;
   }
 }
