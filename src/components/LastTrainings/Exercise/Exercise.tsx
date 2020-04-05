@@ -56,7 +56,8 @@ const Exercise: React.FC<IProps> = ({
             <AiFillCloseCircle className="Exercise-listItem-delete" />
           )}
           <span className="Exercise-listItem-numberOfItems">
-            {val.valueWeight && `${val.valueWeight} /`} {val.numberOfItems}
+            {val.numberOfItems}
+            {val.valueWeight && <span> / {val.valueWeight}</span>}
           </span>
           <span className="Exercise-listItem-time">{val.time}</span>
         </div>

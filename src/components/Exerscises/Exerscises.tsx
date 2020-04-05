@@ -17,13 +17,12 @@ const Exerscises: React.FC<IProps> = ({ setExercise, selectedExercise }) => {
   return (
     <div className="Exercises">
       <label className="Exercises-label">
-        {/*  <FiChevronDown size={24} className="Exercises-label-icon" /> */}
         <select
           value={selectedExercise}
           className="Exercises-select"
           onChange={({ target: { value } }) => handleChange(value)}
         >
-          {exercises.map(item => {
+          {exercises.map((item) => {
             return (
               <option
                 key={item.alias}
