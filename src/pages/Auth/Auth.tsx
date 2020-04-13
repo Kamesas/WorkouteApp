@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AuthForm from "../../components/Auth/AuthForm";
 import "./Auth.scss";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,8 +11,8 @@ interface IProps {
 
 const Auth: React.FC<IProps> = () => {
   const [loginForm, setLoginForm] = useState<boolean>(true);
-  const userData = useSelector(({ authReducer }: any) => {
-    return authReducer.userData;
+  const authResult = useSelector(({ authReducer }: any) => {
+    return authReducer.authResult;
   });
   const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ const Auth: React.FC<IProps> = () => {
 
   return (
     <div className="Auth">
-      {userData ? (
+      {authResult === "success" ? (
         <button className="AuthForm-submitButton" onClick={logOutHandler}>
           logout
         </button>

@@ -1,6 +1,6 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, useEffect } from "react";
 import { auth } from "../../store/actions/actionAuth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./AuthForm.scss";
 import { formOptionData } from "./model";
 
@@ -10,6 +10,9 @@ interface IProps {
 
 const AuthForm: React.FC<IProps> = ({ loginForm }) => {
   const [formOption, setFormOption] = useState<any>({ ...formOptionData });
+  const authResult = useSelector(({ authReducer }: any) => {
+    return authReducer.authResult;
+  });
 
   const { email, password } = formOption;
   const dispatch = useDispatch();
@@ -38,11 +41,15 @@ const AuthForm: React.FC<IProps> = ({ loginForm }) => {
     setFormOption({ ...copyFormOption });
   };
 
+  //   useEffect(() => {
+  //   authResult === "success" ?
+  // }, [authResult]);
+
   const loginHandler = () => {
     const loginBody = {
       email: formOption.email.inputValue,
       password: formOption.password.inputValue,
-      returnSecureToken: true
+      returnSecureToken: true,
     };
 
     dispatch(auth(loginBody, true));
@@ -52,7 +59,7 @@ const AuthForm: React.FC<IProps> = ({ loginForm }) => {
     const registerBody = {
       email: formOption.email.inputValue,
       password: formOption.password.inputValue,
-      returnSecureToken: true
+      returnSecureToken: true,
     };
 
     dispatch(auth(registerBody, false));
@@ -65,42 +72,38 @@ const AuthForm: React.FC<IProps> = ({ loginForm }) => {
 
   return (
     <form onSubmit={onSubmitHandler} className="AuthForm">
-      <div className="AuthForm-info">
-        For testing you can use " test@gmail.com " and " 123456 "
-      </div>
+      {loginForm && (
+        <div className="AuthForm-info">
+          For testing you can use " test@gmail.com " and " 123456 "
+        </div>
+      )}
       <input
         type="email"
         name="email"
         placeholder="enter your email"
         value={email.inputValue}
-        onChange={e => onInputHandler(e)}
+        onChange={(e) => onInputHandler(e)}
         className="AuthForm-input"
       />
-      {/*  <input
-        type="text"
-        name="login"
-        placeholder="enter your login"
-        value={login.inputValue}
-        onChange={e => onInputHandler(e)}
-        className="AuthForm-input"
-      /> */}
       <input
         type="password"
         name="password"
         placeholder="enter your password"
         value={password.inputValue}
-        onChange={e => onInputHandler(e)}
+        onChange={(e) => onInputHandler(e)}
         className="AuthForm-input"
       />
       {loginForm ? (
         <button className="AuthForm-submitButton" onClick={loginHandler}>
-          submit
+          Sign in
         </button>
       ) : (
         <button className="AuthForm-submitButton" onClick={registerHandler}>
-          submit
+          Sign up
         </button>
       )}
+
+      {authResult}
     </form>
   );
 };

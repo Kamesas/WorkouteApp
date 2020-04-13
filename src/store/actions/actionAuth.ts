@@ -1,4 +1,4 @@
-import { AUTH_LOGOUT, GET_USER_DATA } from "./types";
+import { AUTH_LOGOUT, GET_USER_DATA, AUTH_RESULT } from "./types";
 import { authRef, fire } from "../../firebaseConfig";
 
 export const auth = (registerBody: any, isLogin: boolean) => {
@@ -7,16 +7,18 @@ export const auth = (registerBody: any, isLogin: boolean) => {
       fire
         .auth()
         .signInWithEmailAndPassword(registerBody.email, registerBody.password)
-        .then(data => {
+        .then((data) => {
           const userData = {
             name: data.user ? data.user.displayName : null,
-            email: data.user ? data.user.email : null
+            email: data.user ? data.user.email : null,
           };
 
           localStorage.setItem("WorkoutUserData", JSON.stringify(userData));
           dispatch(getUserData(userData));
+          dispatch(authResult("success"));
         })
-        .catch(error => {
+        .catch((error) => {
+          dispatch(authResult("error"));
           console.log(error);
         });
     };
@@ -28,27 +30,36 @@ export const auth = (registerBody: any, isLogin: boolean) => {
           registerBody.email,
           registerBody.password
         )
-        .then(data => {
+        .then((data) => {
           console.log(data);
           const userData = {
             name: data.user ? data.user.displayName : null,
-            email: data.user ? data.user.email : null
+            email: data.user ? data.user.email : null,
           };
 
           localStorage.setItem("WorkoutUserData", JSON.stringify(userData));
           dispatch(getUserData(userData));
+          dispatch(authResult("success"));
         })
-        .catch(function(error) {
+        .catch(function (error) {
+          dispatch(authResult("error"));
           console.log(error);
         });
     };
   }
 };
 
+const authResult = (result: string) => {
+  return {
+    type: AUTH_RESULT,
+    payload: result,
+  };
+};
+
 export const getUserData = (userData: any) => {
   return {
     type: GET_USER_DATA,
-    payload: userData
+    payload: userData,
   };
 };
 
@@ -59,7 +70,8 @@ export const logout = () => (dispatch: any) => {
       localStorage.removeItem("WorkoutUserData");
       dispatch({ type: AUTH_LOGOUT });
     })
-    .catch(error => {
+    .catch((error) => {
+      dispatch(authResult("logout"));
       console.log(error);
     });
 };
