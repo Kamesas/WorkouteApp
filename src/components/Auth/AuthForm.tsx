@@ -5,11 +5,13 @@ import "./AuthForm.scss";
 import { formOptionData } from "./model";
 
 interface IProps {
-  [key: string]: any;
+  loginForm: boolean;
+  setLoginForm: (isLogin: boolean) => void;
 }
 
-const AuthForm: React.FC<IProps> = ({ loginForm }) => {
+const AuthForm: React.FC<IProps> = ({ loginForm, setLoginForm }) => {
   const [formOption, setFormOption] = useState<any>({ ...formOptionData });
+  const [alert, setAlert] = useState<string | null>(null);
   const authResult = useSelector(({ authReducer }: any) => {
     return authReducer.authResult;
   });
@@ -41,9 +43,10 @@ const AuthForm: React.FC<IProps> = ({ loginForm }) => {
     setFormOption({ ...copyFormOption });
   };
 
-  //   useEffect(() => {
-  //   authResult === "success" ?
-  // }, [authResult]);
+  useEffect(() => {
+    authResult === "error" &&
+      setAlert("Wrong email or password ! Maybe you need");
+  }, [authResult]);
 
   const loginHandler = () => {
     const loginBody = {
@@ -67,6 +70,7 @@ const AuthForm: React.FC<IProps> = ({ loginForm }) => {
 
   const onSubmitHandler = (e: FormEvent) => {
     e.preventDefault();
+    setAlert(null);
     loginForm ? loginHandler() : registerHandler();
   };
 
@@ -103,7 +107,11 @@ const AuthForm: React.FC<IProps> = ({ loginForm }) => {
         </button>
       )}
 
-      {authResult}
+      {alert && loginForm && (
+        <div className="AuthForm-alert">
+          {alert} <span onClick={() => setLoginForm(false)}>register</span>
+        </div>
+      )}
     </form>
   );
 };

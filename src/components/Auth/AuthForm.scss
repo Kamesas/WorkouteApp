@@ -13,9 +13,20 @@
     padding: 0.5rem 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    margin-bottom: 1rem;
   }
 
   &-info {
     margin-bottom: 1rem;
+  }
+
+  &-alert {
+    margin-top: 1rem;
+
+    span {
+      text-decoration: underline;
+      letter-spacing: 2px;
+      cursor: pointer;
+    }
   }
 }

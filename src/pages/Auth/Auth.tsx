@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import AuthForm from "../../components/Auth/AuthForm";
 import "./Auth.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/actions/actionAuth";
 import { onResetState } from "../../store/actions/actionWorkout";
+import { useHistory } from "react-router-dom";
 
-interface IProps {
-  [key: string]: any;
-}
-
-const Auth: React.FC<IProps> = () => {
+const Auth: React.FC = () => {
   const [loginForm, setLoginForm] = useState<boolean>(true);
-  const authResult = useSelector(({ authReducer }: any) => {
-    return authReducer.authResult;
+  const userData = useSelector(({ authReducer }: any) => {
+    return authReducer.userData;
   });
   const dispatch = useDispatch();
+
+  const history = useHistory();
 
   const logOutHandler = () => {
     dispatch(logout());
@@ -23,10 +22,18 @@ const Auth: React.FC<IProps> = () => {
 
   return (
     <div className="Auth">
-      {authResult === "success" ? (
-        <button className="AuthForm-submitButton" onClick={logOutHandler}>
-          logout
-        </button>
+      {userData ? (
+        <>
+          <button className="AuthForm-submitButton" onClick={logOutHandler}>
+            logout
+          </button>
+          <button
+            className="AuthForm-submitButton"
+            onClick={() => history.push("/")}
+          >
+            go to main page
+          </button>
+        </>
       ) : (
         <>
           <label className="Auth-formToggler">
@@ -42,7 +49,7 @@ const Auth: React.FC<IProps> = () => {
             {loginForm ? "Login" : "Registration"} form
           </div>
           <div className="Auth-wrapForm">
-            <AuthForm loginForm={loginForm} />
+            <AuthForm loginForm={loginForm} setLoginForm={setLoginForm} />
           </div>
         </>
       )}
